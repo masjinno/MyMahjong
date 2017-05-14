@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyMahjongWPF.View;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,15 @@ namespace MyMahjongWPF
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// メイン画面インスタンス
+        /// </summary>
+        private View.MainWindow mainWindow;
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            mainWindow = new View.MainWindow();
+            mainWindow.Show();
+        }
     }
 }

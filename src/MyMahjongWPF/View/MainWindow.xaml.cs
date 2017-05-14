@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyMahjongWPF
+namespace MyMahjongWPF.View
 {
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
@@ -23,6 +23,7 @@ namespace MyMahjongWPF
         public MainWindow()
         {
             InitializeComponent();
+            MessageBox.Show("MainWindow constructor.");
         }
     }
 }
