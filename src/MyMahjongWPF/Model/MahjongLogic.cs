@@ -123,16 +123,5 @@ namespace MyMahjongWPF.Model
 
             #endregion
         }
-
-        /// <summary>
-        /// 聴牌判定
-        /// </summary>
-        /// <returns></returns>
-        public static bool IsWaitingHand()
-        {
-            // 未実装
-
-            return false;
-        }
     }
 }

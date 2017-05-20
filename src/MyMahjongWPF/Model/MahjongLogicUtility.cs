@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyMahjongWPF.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,15 @@ namespace MyMahjongWPF.Model
     /// </summary>
     public static class MahjongLogicUtility
     {
+        /// <summary>
+        /// 聴牌判定
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsWaitingHand(Model.MahjongLogic.TileInfo[] hands)
+        {
+            // 未実装
+
+            return false;
+        }
     }
 }
