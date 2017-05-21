@@ -60,19 +60,56 @@ namespace MyMahjong
         /// 国士無双が揃っているか判定する。
         /// 門前手のみ。
         /// </summary>
-        /// <param name="concealedTiles">門前手牌</param>
+        /// <param name="hands">門前手牌</param>
         /// <returns>国士無双が揃っているか  true:揃っている  false:揃っていない</returns>
-        private static bool IsThirteenOrphans(Tile[] concealedTiles)
+        private static bool IsThirteenOrphans(Tile[] hands)
         {
             /// 引数妥当性チェック
-            if (concealedTiles.Count() != 14)
+            if (hands.Count() != 14)
             {
-                throw new ArgumentException(string.Format("Argument {0} is invalid.", nameof(concealedTiles)), nameof(concealedTiles));
+                throw new ArgumentException(string.Format("Argument {0} is invalid.", nameof(hands)), nameof(hands));
             }
 
-            // 未実装
+            int nPair = 0;  // 対子数チェック
+            Tile prevTile = null;   // ループの前の周の牌を保持。対子判定のため。
+            foreach (Tile t in hands)
+            {
+                /// 対子の数をチェック
+                if (prevTile != null)
+                {
+                    if (t.Kind == prevTile.Kind)
+                    {
+                        nPair++;
+                        if (nPair > 1) return false;
+                    }
+                }
 
-            return false;
+                switch (t.Kind)
+                {
+                    case Tile.Kinds.Character1:
+                    case Tile.Kinds.Character9:
+                    case Tile.Kinds.Circle1:
+                    case Tile.Kinds.Circle9:
+                    case Tile.Kinds.Bamboo1:
+                    case Tile.Kinds.Bamboo9:
+                    case Tile.Kinds.East:
+                    case Tile.Kinds.South:
+                    case Tile.Kinds.West:
+                    case Tile.Kinds.North:
+                    case Tile.Kinds.WhiteDragon:
+                    case Tile.Kinds.GreenDragon:
+                    case Tile.Kinds.RedDragon:
+                        /// 指定牌であれば、次の牌チェック
+                        break;
+                    default:
+                        /// 指定牌以外があれば即return
+                        return false;
+                }
+
+                prevTile = t;
+            }
+
+            return true;
         }
     }
 }
