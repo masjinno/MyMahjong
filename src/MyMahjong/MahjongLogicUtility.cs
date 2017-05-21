@@ -14,8 +14,10 @@ namespace MyMahjong
         /// <summary>
         /// 聴牌判定
         /// </summary>
-        /// <returns></returns>
-        public static bool IsWaitingHand(Tile[] concealedHands, Tile[] openedHands)
+        /// <param name="concealedTiles">門前手</param>
+        /// <param name="openedSets">鳴いた面子</param>
+        /// <returns>聴牌しているか  true:聴牌  false:不聴</returns>
+        public static bool IsWaitingHand(Tile[] concealedTiles, TileSet[] openedSets)
         {
             // 未実装
 
