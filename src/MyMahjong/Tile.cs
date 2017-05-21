@@ -92,6 +92,62 @@ namespace MyMahjong
         public Tile.DragonKinds DragonKind { get; set; }
 
         /// <summary>
+        /// ドラ
+        /// </summary>
+        public int Dora { get; set; }
+
+        /// <summary>
+        /// ソート用の牌種によるインデックス
+        /// </summary>
+        public int Index
+        {
+            get
+            {
+                int tmpIndex = -1;
+                switch (this.Kind)
+                {
+                    case Tile.Kinds.Suit:
+                        switch (this.SuitKind)
+                        {
+                            case SuitKinds.Character: tmpIndex = this.Number + 0; break;
+                            case SuitKinds.Circle   : tmpIndex = this.Number + 10; break;
+                            case SuitKinds.Bamboo   : tmpIndex = this.Number + 20; break;
+                        }
+                        break;
+                    case Tile.Kinds.Honour:
+                        switch (this.HonourKind)
+                        {
+                            case HonourKinds.Wind:
+                                switch (this.WindKind)
+                                {
+                                    case MahjongLogic.WindKinds.East : tmpIndex = 31; break;
+                                    case MahjongLogic.WindKinds.South: tmpIndex = 32; break;
+                                    case MahjongLogic.WindKinds.West: tmpIndex = 33; break;
+                                    case MahjongLogic.WindKinds.North: tmpIndex = 34; break;
+                                }
+                                break;
+                            case HonourKinds.Dragon:
+                                switch (this.DragonKind)
+                                {
+                                    case DragonKinds.WhiteDragon: tmpIndex = 41; break;
+                                    case DragonKinds.GreenDragon: tmpIndex = 42; break;
+                                    case DragonKinds.RedDragon: tmpIndex = 43; break;
+                                }
+                                break;
+                        }
+                        break;
+                }
+                if (tmpIndex == -1)
+                {
+                    throw new ArgumentException(string.Format("{0}, {1}, {2}, {3} or {4} is invalid.",
+                        nameof(this.Kind), nameof(this.SuitKind), nameof(this.HonourKind), nameof(this.WindKind), nameof(this.DragonKind)));
+                }
+
+                return tmpIndex;
+            }
+        }
+
+        /// <summary>
         /// 表面の画像
         /// </summary>
         public System.Windows.Media.ImageSource FrontImage { get; }
