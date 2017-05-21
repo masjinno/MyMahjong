@@ -42,17 +42,33 @@ namespace MyMahjong
                     throw new ArgumentOutOfRangeException(nameof(openedSets), string.Format("Argument {0} must not be Pair.", nameof(openedSets)));
                 }
             }
+            
+            Tile[] hands = new Tile[concealedTiles.Count() + 1];
+            concealedTiles.CopyTo(hands, 0);
+            hands[concealedTiles.Count()] = drawnTile;
 
-            /// ソート
-            Array.Sort(concealedTiles, (a, b) => a.Index - b.Index);
+            /// 手牌をソート
+            Array.Sort(hands, (a, b) => a.Index - b.Index);
 
             /// 牌数チェック
             int nTiles = 0;
             nTiles += concealedTiles.Count() + openedSets.Count() * 3 + 1;
             if (nTiles != 14) throw new ArgumentException("The number of tiles is invalid.");
 
-            // 未実装
+            /// 国士無双チェック
+            if (MahjongLogicUtility.IsThirteenOrphans(hands))
+            {
+                return true;
+            }
 
+            /// 七対子チェック
+            if (MahjongLogicUtility.IsSevenPairs(hands))
+            {
+                return true;
+            }
+
+            // 一般形(4対子+1雀頭)未実装
+            
             return false;
         }
 
