@@ -67,7 +67,7 @@ namespace MyMahjong
             /// 引数妥当性チェック
             if (concealedTiles.Count() != 14)
             {
-                throw new ArgumentException(string.Format("Argument {0} is invalid.", nameof(concealedTiles), nameof(concealedTiles));
+                throw new ArgumentException(string.Format("Argument {0} is invalid.", nameof(concealedTiles), nameof(concealedTiles)));
             }
 
             // 未実装
