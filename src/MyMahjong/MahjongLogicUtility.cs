@@ -23,5 +23,19 @@ namespace MyMahjong
 
             return false;
         }
+
+        /// <summary>
+        /// 和了判定
+        /// </summary>
+        /// <param name="concealedTiles">門前手</param>
+        /// <param name="openedSets">鳴いた面子</param>
+        /// <param name="drawnTile">ツモ牌</param>
+        /// <returns>和了か  true:和了  false:和了でない</returns>
+        public static bool IsWonHand(Tile[] concealedTiles, TileSet[] openedSets, Tile drawnTile)
+        {
+            // 未実装
+
+            return false;
+        }
     }
 }
