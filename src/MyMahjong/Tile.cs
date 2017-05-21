@@ -92,11 +92,6 @@ namespace MyMahjong
         public Tile.DragonKinds DragonKind { get; set; }
 
         /// <summary>
-        /// 門前の牌か(⇔鳴いていない牌か)
-        /// </summary>
-        public bool IsConcealed { get; set; }
-
-        /// <summary>
         /// 表面の画像
         /// </summary>
         public System.Windows.Media.ImageSource FrontImage { get; }
