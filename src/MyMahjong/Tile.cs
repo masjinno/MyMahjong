@@ -148,6 +148,11 @@ namespace MyMahjong
         }
 
         /// <summary>
+        /// ドラ
+        /// </summary>
+        public int Dora { get; set; }
+
+        /// <summary>
         /// 表面の画像
         /// </summary>
         public System.Windows.Media.ImageSource FrontImage { get; }
