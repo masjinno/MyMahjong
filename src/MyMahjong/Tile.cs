@@ -47,7 +47,7 @@ namespace MyMahjong
             Bamboo8,        // 八索
             Bamboo9,        // 九索
             East,           // 東
-            Sourth,         // 南
+            South,          // 南
             West,           // 西
             North,          // 北
             WhiteDragon,    // 白
