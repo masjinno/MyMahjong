@@ -111,5 +111,46 @@ namespace MyMahjong
 
             return true;
         }
+
+        /// <summary>
+        /// 七対子が揃っているか判定する。
+        /// 門前手のみ。
+        /// </summary>
+        /// <param name="hands">門前手牌。呼び出し元でソート済み。</param>
+        /// <returns>七対子が揃っているか  true:揃っている  false:揃っていない</returns>
+        private static bool IsSevenPairs(Tile[] hands)
+        {
+            if (hands.Count() != 14)
+            {
+                throw new ArgumentException(string.Format("Argument {0} is invalid.", nameof(hands)), nameof(hands));
+            }
+            
+            /// 手牌を精査
+            for (int i = 0; i < hands.Count(); i++)
+            {
+                if (i == 0)
+                {
+                    /// do nothing
+                }
+                if (i % 2 == 0)
+                {
+                    if (hands[i - 1].Kind == hands[i].Kind)
+                    {
+                        /// 偶数個目は、1つ前と同じ牌ではいけない
+                        return false;
+                    }
+                }
+                else //if (i % 2 == 1) のとき
+                {
+                    if (hands[i - 1].Kind != hands[i].Kind)
+                    {
+                        /// 奇数個目は、1つ前と違う牌ではいけない
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
     }
 }
