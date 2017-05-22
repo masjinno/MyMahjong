@@ -24,13 +24,30 @@ namespace MyMahjong
             Kong    // 槓子
         }
 
-
         #endregion
 
         /// <summary>
         /// 面子種類
         /// </summary>
         public TileSet.Kinds Kind { get; set; }
+
+        /// <summary>
+        /// 面子の構成
+        /// </summary>
+        public Tile[] Tiles
+        {
+            get
+            {
+                return _tiles;
+            }
+            set
+            {
+                _tiles = value;
+
+                // TODO: ソート処理
+            }
+        }
+        private Tile[] _tiles;
 
         /// <summary>
         /// 面子の枚数
@@ -52,6 +69,17 @@ namespace MyMahjong
                         throw new ArgumentOutOfRangeException(nameof(Kind), string.Format("Parameter '{0}'({1}) is out of range.", nameof(Kind), Kind));
                 }
             }
+        }
+
+        /// <summary>
+        /// 面子の妥当性チェック
+        /// </summary>
+        /// <returns>面子が妥当か  true:妥当  false:妥当でない</returns>
+        public bool IsValidTileSet()
+        {
+            // 未実装
+
+            return false;
         }
     }
 }
