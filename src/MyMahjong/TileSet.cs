@@ -38,13 +38,13 @@ namespace MyMahjong
         {
             get
             {
-                return _tiles;
+                return this._tiles;
             }
             set
             {
-                _tiles = value;
+                this._tiles = value;
 
-                // TODO: ソート処理
+                Array.Sort(this._tiles, (a, b) => a.Index - b.Index);
             }
         }
         private Tile[] _tiles;
@@ -56,7 +56,7 @@ namespace MyMahjong
         {
             get
             {
-                switch (Kind)
+                switch (this.Kind)
                 {
                     case Kinds.Pair:
                         return 2;
@@ -77,9 +77,52 @@ namespace MyMahjong
         /// <returns>面子が妥当か  true:妥当  false:妥当でない</returns>
         public bool IsValidTileSet()
         {
-            // 未実装
+            bool ret = true;
 
-            return false;
+            if (this.Tiles.Count() != this.TileNum)
+            {
+                ret = false;
+            }
+            else
+            {
+                switch (this.Kind)
+                {
+                    case Kinds.Pair:
+                        ret = (this.Tiles[0].Kind == this.Tiles[1].Kind);   /// 同じ値ならtrue
+                        break;
+                    case Kinds.Chow:
+                        if (this.Tiles[2].IsSuit)   /// 数牌でなければならない
+                        {
+                            if ((this.Tiles[0].IsCharacter == this.Tiles[2].IsCharacter) &&
+                                (this.Tiles[0].IsCircle == this.Tiles[2].IsCircle) &&
+                                (this.Tiles[0].IsBamboo == this.Tiles[2].IsBamboo))     /// 同じ数牌でなければならない
+                            {
+                                /// 連番でならtrue
+                                ret = ((this.Tiles[0].Number + 1 == this.Tiles[1].Number) && (this.Tiles[0].Number + 2 == this.Tiles[2].Number));
+                            }
+                            else
+                            {
+                                ret = false;
+                            }
+                        }
+                        else
+                        {
+                            ret = false;
+                        }
+                        break;
+                    case Kinds.Pung:
+                        ret = (this.Tiles[0].Kind == this.Tiles[1].Kind) && (this.Tiles[0].Kind == this.Tiles[2].Kind);
+                        break;
+                    case Kinds.Kong:
+                        ret = (this.Tiles[0].Kind == this.Tiles[1].Kind) && (this.Tiles[0].Kind == this.Tiles[2].Kind) && (this.Tiles[0].Kind == this.Tiles[3].Kind);
+                        break;
+                    default:
+                        ret = false;
+                        break;
+                }
+            }
+
+            return ret;
         }
     }
 }
