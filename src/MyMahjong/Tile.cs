@@ -65,9 +65,46 @@ namespace MyMahjong
         public Tile.Kinds Kind { get; set; }
 
         /// <summary>
-        /// ソート用の牌種によるインデックス
+        /// 
         /// </summary>
-        public int Index
+        private Dictionary<Tile.Kinds, int> kind2IndexMap = new Dictionary<Kinds, int>()
+        {
+            { Kinds.Character1, 0 }, { Kinds.Character2, 1 }, { Kinds.Character3, 2 },
+            { Kinds.Character4, 3 }, { Kinds.Character5, 4 }, { Kinds.Character6, 5 },
+            { Kinds.Character7, 6 }, { Kinds.Character8, 7 }, { Kinds.Character9, 8 },
+            { Kinds.Circle1, 9 }, { Kinds.Circle2, 10 }, { Kinds.Circle3, 11 },
+            { Kinds.Circle4, 12 }, { Kinds.Circle5, 13 }, { Kinds.Circle6, 14 },
+            { Kinds.Circle7, 15 }, { Kinds.Circle8, 16 }, { Kinds.Circle9, 17 },
+            { Kinds.Bamboo1, 18 }, { Kinds.Bamboo2, 19 }, { Kinds.Bamboo3, 20 },
+            { Kinds.Bamboo4, 21 }, { Kinds.Bamboo5, 22 }, { Kinds.Bamboo6, 23 },
+            { Kinds.Bamboo7, 24 }, { Kinds.Bamboo8, 25 }, { Kinds.Bamboo9, 26 },
+            { Kinds.East, 27 }, { Kinds.South, 28 }, { Kinds.West, 29 }, { Kinds.North, 30 },
+            { Kinds.WhiteDragon, 31 }, { Kinds.GreenDragon, 32 }, { Kinds.RedDragon, 33 }
+        };
+
+        /// <summary>ソート用の牌種によるインデックス</summary>
+        public int Index { get { return kind2IndexMap[this.Kind]; } }
+
+        /// <summary>数牌か</summary>
+        public bool IsSuit { get { return (IsCharacter || IsCircle || IsBamboo); } }
+
+        /// <summary>字牌か</summary>
+        public bool IsHonour { get { return (IsWind || IsDragon); } }
+
+        /// <summary>萬子か</summary>
+        public bool IsCharacter { get { return (kind2IndexMap[Kinds.Character1] <= this.Index && this.Index <= kind2IndexMap[Kinds.Character9]); } }
+
+        /// <summary>筒子か</summary>
+        public bool IsCircle { get { return (kind2IndexMap[Kinds.Circle1] <= this.Index && this.Index <= kind2IndexMap[Kinds.Circle9]); } }
+
+        /// <summary>索子か</summary>
+        public bool IsBamboo { get { return (kind2IndexMap[Kinds.Bamboo1] <= this.Index && this.Index <= kind2IndexMap[Kinds.Bamboo9]); } }
+
+        /// <summary>風牌か</summary>
+        public bool IsWind { get { return (kind2IndexMap[Kinds.East] <= this.Index && this.Index <= kind2IndexMap[Kinds.North]); } }
+
+        /// <summary>三元牌か</summary>
+        public bool IsDragon { get { return (kind2IndexMap[Kinds.WhiteDragon] <= this.Index && this.Index <= kind2IndexMap[Kinds.RedDragon]); } }
         {
             get
             {
