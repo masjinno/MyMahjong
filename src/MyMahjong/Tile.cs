@@ -82,7 +82,7 @@ namespace MyMahjong
                     { Kinds.Bamboo1, 18 }, { Kinds.Bamboo2, 19 }, { Kinds.Bamboo3, 20 },
                     { Kinds.Bamboo4, 21 }, { Kinds.Bamboo5, 22 }, { Kinds.Bamboo6, 23 },
                     { Kinds.Bamboo7, 24 }, { Kinds.Bamboo8, 25 }, { Kinds.Bamboo9, 26 },
-                    { Kinds.East, 27 }, { Kinds.Sourth, 28 }, { Kinds.West, 29 }, { Kinds.North, 30 },
+                    { Kinds.East, 27 }, { Kinds.South, 28 }, { Kinds.West, 29 }, { Kinds.North, 30 },
                     { Kinds.WhiteDragon, 31 }, { Kinds.GreenDragon, 32 }, { Kinds.RedDragon, 33 }
                 };
                 return kind2IndexMap[this.Kind];
