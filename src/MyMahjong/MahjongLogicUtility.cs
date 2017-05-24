@@ -67,22 +67,27 @@ namespace MyMahjong
                 return true;
             }
 
-            /// 一般形(4対子+1雀頭)
+            /// 一般形(4面子+1雀頭)ができているかチェック
 
             /// 面子配列の妥当性チェック
             foreach (TileSet ts in openedSets)
             {
                 if (!ts.IsValidTileSet())
                 {
-                    // TODO: 例外スロー
+                    throw new InvalidOperationException("Tile set is invalid.");
                 }
             }
             
             /// 面前の手配に対する妥当性チェック
+            
+            /// 手配探索時に面子構成判定としたかを記憶する配列
             bool[] isPicked = new bool[concealedTiles.Count()];
-            foreach (Tile t in concealedTiles)
+            for (int tileIndex = 0; tileIndex<concealedTiles.Count(); tileIndex++)
             {
-                /// 雀頭候補
+                /// 面子構成判定配列の初期化
+                for (int i = 0; i < isPicked.Count(); i++) isPicked[i] = false;
+
+                /// 雀頭候補を決定
 
                 /// 刻子チェック
 
