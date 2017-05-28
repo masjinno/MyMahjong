@@ -193,5 +193,48 @@ namespace MyMahjong
 
             return true;
         }
+
+        /// <summary>
+        /// 対子になりえるかチェックする
+        /// </summary>
+        /// <param name="hands">手牌の配列</param>
+        /// <param name="isUsed">使用済みか記憶する配列。対子になれば、該当の2牌のindexに対応する要素をtrueにする。</param>
+        /// <param name="tempTileSets">暫定手牌。対子になった場合はこの配列に追加する。</param>
+        /// <param name="index">hands, isUsedの配列のindex</param>
+        /// <returns>対子になりえるか  true:なりえる  false:なりえない</returns>
+        private static bool IsPair(Tile[] hands, ref bool[] isUsed, ref List<TileSet> tempTileSets, int index)
+        {
+            /// 引数妥当性チェック
+            if (hands.Count() != isUsed.Count())
+            {
+                throw new ArgumentException("Array Arguments 'hands' and 'isUsed' count are not equaled.");
+            }
+            if (index < 0 || index + 1 >= hands.Count())
+            {
+                throw new ArgumentOutOfRangeException(string.Format("Argument 'index'{0} is invalid.", index));
+            }
+
+            /// 対子チェック
+            if (hands[index].Kind == hands[index + 1].Kind)
+            {
+                isUsed[index] = true;
+                isUsed[index + 1] = true;
+                Tile[] t = new Tile[2] { hands[index], hands[index + 1] };
+                TileSet ts = new TileSet();
+                ts.Kind = TileSet.Kinds.Pair;
+                ts.Tiles = t;
+                if (!ts.IsValidTileSet())
+                {
+                    throw new Exception("The implementation is NG.");
+                }
+                tempTileSets.Add(ts);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
