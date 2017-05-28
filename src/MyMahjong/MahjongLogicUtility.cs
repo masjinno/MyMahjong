@@ -19,7 +19,18 @@ namespace MyMahjong
         /// <returns>聴牌しているか  true:聴牌  false:不聴</returns>
         public static bool IsWaitingHand(Tile[] concealedTiles, TileSet[] openedSets)
         {
-            // 未実装
+            Tile drawnTile = new Tile();
+            foreach (Tile.Kinds k in Enum.GetValues(typeof(Tile.Kinds)))
+            {
+                drawnTile.Kind = k;
+
+                /// 1枚追加して和了となるか
+                if (IsWonHand(concealedTiles, openedSets, drawnTile))
+                {
+                    /// 和了形が見つかったのでtrueを返す
+                    return true;
+                }
+            }
 
             return false;
         }
