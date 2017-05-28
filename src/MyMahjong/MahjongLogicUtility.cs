@@ -299,5 +299,80 @@ namespace MyMahjong
                 return false;
             }
         }
+
+        /// <summary>
+        /// 順子になりえるかチェックする
+        /// </summary>
+        /// <param name="hands">手牌の配列</param>
+        /// <param name="isUsed">使用済みか記憶する配列。順子になれば、該当の3牌のindexに対応する要素をtrueにする。</param>
+        /// <param name="tempTileSets">暫定手牌。順子になった場合はこの配列に追加する。</param>
+        /// <param name="index">hands, isUsedの配列のindex</param>
+        /// <returns>順子になりえるか  true:なりえる  false:なりえない</returns>
+        private static bool IsChow(Tile[] hands, ref bool[] isUsed, ref List<TileSet> tempTileSets, int index)
+        {
+            /// 引数妥当性チェック
+            if (hands.Count() != isUsed.Count())
+            {
+                throw new ArgumentException("Array Arguments 'hands' and 'isUsed' count are not equaled.");
+            }
+            if (index < 0 || index + 1 >= hands.Count())
+            {
+                throw new ArgumentOutOfRangeException(string.Format("Argument 'index'{0} is invalid.", index));
+            }
+
+            /// 数牌でなければ即return false
+            if (!hands[index].IsSuit)
+            {
+                return false;
+            }
+
+            /// 数牌でもチェック対象の数が8以上であれば、即return false
+            if (hands[index].Number >= 8)
+            {
+                return false;
+            }
+
+            /// 牌チェック
+            int num = 1;
+            int[] chowIndices = new int[3];
+            chowIndices[0] = index;
+            for (int checkIndex = index + 1; checkIndex < hands.Count(); checkIndex++)
+            {
+                if (hands[index].Number == hands[checkIndex].Number + num)
+                {
+                    chowIndices[num] = checkIndex;
+                    num++;
+                    if (num == 3)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            ///順子チェック
+            if (num == 3)
+            {
+                Tile[] t = new Tile[3];
+                foreach (int i in chowIndices)
+                {
+                    isUsed[i] = true;
+                    t[i] = hands[chowIndices[i]];
+                }
+                TileSet ts = new TileSet();
+                ts.Kind = TileSet.Kinds.Pung;
+                ts.Tiles = t;
+                if (!ts.IsValidTileSet())
+                {
+                    throw new Exception("The implementation is NG.");
+                }
+                tempTileSets.Add(ts);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
