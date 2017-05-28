@@ -132,12 +132,12 @@ namespace MyMahjong
         /// <summary>
         /// 表面の画像
         /// </summary>
-        public System.Windows.Media.ImageSource FrontImage { get; }
+        public System.Windows.Media.ImageSource FrontImage { get; set; }
 
         /// <summary>
         /// 裏面の画像
         /// </summary>
-        public System.Windows.Media.ImageSource BackImage { get; }
+        public System.Windows.Media.ImageSource BackImage { get; set; }
 
         #endregion
     }
