@@ -81,17 +81,58 @@ namespace MyMahjong
             /// 面前の手配に対する妥当性チェック
             
             /// 手配探索時に面子構成判定としたかを記憶する配列
-            bool[] isPicked = new bool[concealedTiles.Count()];
-            for (int tileIndex = 0; tileIndex<concealedTiles.Count(); tileIndex++)
+            bool[] isUsed = new bool[hands.Count()];
+            /// 探索した面子構成
+            List<TileSet> tempTileSets = new List<TileSet>();
+            for (int pairTileIndex = 0; pairTileIndex < hands.Count(); pairTileIndex++)
             {
                 /// 面子構成判定配列の初期化
-                for (int i = 0; i < isPicked.Count(); i++) isPicked[i] = false;
+                for (int i = 0; i < isUsed.Count(); i++) isUsed[i] = false;
+                tempTileSets.Clear();
 
-                /// 雀頭候補を決定
+                /// 雀頭でなければ、次の面子判定に移行
+                if (!MahjongLogicUtility.IsPair(hands, ref isUsed, ref tempTileSets, pairTileIndex))
+                {
+                    continue;
+                }
 
-                /// 刻子チェック
+                /// 面子判定
+                for (int tileSetCheckIndex = 0; tileSetCheckIndex < hands.Count() * 2; tileSetCheckIndex++)
+                {
+                    /// 面子判定済みなら、面子判定から除外
+                    if (isUsed[tileSetCheckIndex])
+                    {
+                        continue;
+                    }
 
-                /// 順子チェック
+                    /// 刻子 & 順子チェック
+                    TileSet.Kinds[] kindsArray = new TileSet.Kinds[2] { TileSet.Kinds.Pung, TileSet.Kinds.Chow };
+                    foreach (TileSet.Kinds k in kindsArray)
+                    {
+                        switch (k)
+                        {
+                            case TileSet.Kinds.Pung:
+                                if (!IsPung(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex))
+                                {
+                                    IsChow(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex);
+                                }
+                                break;
+                            case TileSet.Kinds.Chow:
+                                if (!IsChow(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex))
+                                {
+                                    IsPung(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex);
+                                }
+                                break;
+                        }
+                    }
+                }
+
+                /// 暫定面子
+                if (tempTileSets.Count == (hands.Count() + 1) / 3)
+                {
+                    /// 面子構成が見つかったのでtrueを返す
+                    return true;
+                }
             }
 
             return false;
