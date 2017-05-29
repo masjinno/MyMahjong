@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandCheckToolWPF.View;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,12 @@ namespace HandCheckToolWPF
     /// </summary>
     public partial class App : Application
     {
+        private View.MainWindow view;
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            view = new View.MainWindow();
+            view.Show();
+        }
     }
 }
