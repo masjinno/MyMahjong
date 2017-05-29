@@ -111,5 +111,12 @@
     <Folder Include="Model\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resource\Prism.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>copy $(SolutionDir)packages\Prism.Core.6.3.0\lib\net45\Prism.dll $(ProjectDir)Resource\Prism.dll
+</PreBuildEvent>
+  </PropertyGroup>
 </Project>
