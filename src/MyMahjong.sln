@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMahjong", "MyMahjong\MyMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMahjongWPF", "MyMahjongWPF\MyMahjongWPF.csproj", "{31D9CBF2-E500-473A-81B8-12CDC2EECF1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandCheckToolWPF", "HandCheckToolWPF\HandCheckToolWPF.csproj", "{83E5AE6E-E297-4BA8-8033-1FFB9FF9BF01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{31D9CBF2-E500-473A-81B8-12CDC2EECF1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31D9CBF2-E500-473A-81B8-12CDC2EECF1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31D9CBF2-E500-473A-81B8-12CDC2EECF1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83E5AE6E-E297-4BA8-8033-1FFB9FF9BF01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83E5AE6E-E297-4BA8-8033-1FFB9FF9BF01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83E5AE6E-E297-4BA8-8033-1FFB9FF9BF01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83E5AE6E-E297-4BA8-8033-1FFB9FF9BF01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
