@@ -112,6 +112,43 @@
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resource\Image\Tile\tile_00_1m.png" />
+    <Resource Include="Resource\Image\Tile\tile_01_2m.png" />
+    <Resource Include="Resource\Image\Tile\tile_02_3m.png" />
+    <Resource Include="Resource\Image\Tile\tile_03_4m.png" />
+    <Resource Include="Resource\Image\Tile\tile_04_5m.png" />
+    <Resource Include="Resource\Image\Tile\tile_04_5m_r.png" />
+    <Resource Include="Resource\Image\Tile\tile_05_6m.png" />
+    <Resource Include="Resource\Image\Tile\tile_06_7m.png" />
+    <Resource Include="Resource\Image\Tile\tile_07_8m.png" />
+    <Resource Include="Resource\Image\Tile\tile_08_9m.png" />
+    <Resource Include="Resource\Image\Tile\tile_09_1p.png" />
+    <Resource Include="Resource\Image\Tile\tile_10_2p.png" />
+    <Resource Include="Resource\Image\Tile\tile_11_3p.png" />
+    <Resource Include="Resource\Image\Tile\tile_12_4p.png" />
+    <Resource Include="Resource\Image\Tile\tile_13_5p.png" />
+    <Resource Include="Resource\Image\Tile\tile_13_5p_r.png" />
+    <Resource Include="Resource\Image\Tile\tile_14_6p.png" />
+    <Resource Include="Resource\Image\Tile\tile_15_7p.png" />
+    <Resource Include="Resource\Image\Tile\tile_16_8p.png" />
+    <Resource Include="Resource\Image\Tile\tile_17_9p.png" />
+    <Resource Include="Resource\Image\Tile\tile_18_1s.png" />
+    <Resource Include="Resource\Image\Tile\tile_19_2s.png" />
+    <Resource Include="Resource\Image\Tile\tile_20_3s.png" />
+    <Resource Include="Resource\Image\Tile\tile_21_4s.png" />
+    <Resource Include="Resource\Image\Tile\tile_22_5s.png" />
+    <Resource Include="Resource\Image\Tile\tile_22_5s_r.png" />
+    <Resource Include="Resource\Image\Tile\tile_23_6s.png" />
+    <Resource Include="Resource\Image\Tile\tile_24_7s.png" />
+    <Resource Include="Resource\Image\Tile\tile_25_8s.png" />
+    <Resource Include="Resource\Image\Tile\tile_26_9s.png" />
+    <Resource Include="Resource\Image\Tile\tile_27_e.png" />
+    <Resource Include="Resource\Image\Tile\tile_28_s.png" />
+    <Resource Include="Resource\Image\Tile\tile_29_w.png" />
+    <Resource Include="Resource\Image\Tile\tile_30_n.png" />
+    <Resource Include="Resource\Image\Tile\tile_31_wd.png" />
+    <Resource Include="Resource\Image\Tile\tile_32_gd.png" />
+    <Resource Include="Resource\Image\Tile\tile_33_rd.png" />
     <Content Include="Resource\Prism.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -124,6 +161,8 @@
   </Target>
   <PropertyGroup>
     <PreBuildEvent>copy $(SolutionDir)packages\Prism.Core.6.3.0\lib\net45\Prism.dll $(ProjectDir)Resource\Prism.dll
+mkdir $(ProjectDir)Resource\Image\Tile
+copy $(SolutionDir)data\images\tiles $(ProjectDir)Resource\Image\Tile
 </PreBuildEvent>
   </PropertyGroup>
 </Project>
