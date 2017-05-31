@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Wpf.6.3.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -75,6 +76,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -109,7 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Image\Tile\tile_00_1m.png" />
@@ -150,6 +151,12 @@
     <Resource Include="Resource\Image\Tile\tile_32_gd.png" />
     <Resource Include="Resource\Image\Tile\tile_33_rd.png" />
     <Content Include="Resource\Prism.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyMahjong\MyMahjong.csproj">
+      <Project>{9f5be314-fcbf-4a9c-aa35-1f00dd5427c9}</Project>
+      <Name>MyMahjong</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterResolveReferences">

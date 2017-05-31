@@ -5,9 +5,92 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HandCheckToolWPF"
+        xmlns:vm="clr-namespace:HandCheckToolWPF.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Hand Check Tool"
+        Width="1028"
+        Height="600">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+    <Grid Background="Lime" ShowGridLines="True" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="420"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="66"/>
+                    <ColumnDefinition Width="66"/>
+                    <ColumnDefinition Width="66"/>
+                    <ColumnDefinition Width="66"/>
+                    <ColumnDefinition Width="66"/>
+                    <ColumnDefinition Width="66"/>
+                    <ColumnDefinition Width="66"/>
+                    <ColumnDefinition Width="66"/>
+                    <ColumnDefinition Width="66"/>
+                    <ColumnDefinition Width="66"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0"><Image Source="{Binding Path=TileArray[ 0].FrontImage}"/></Button>
+                <Button Grid.Row="0" Grid.Column="1"><Image Source="{Binding Path=TileArray[ 1].FrontImage}"/></Button>
+                <Button Grid.Row="0" Grid.Column="2"><Image Source="{Binding Path=TileArray[ 2].FrontImage}"/></Button>
+                <Button Grid.Row="0" Grid.Column="3"><Image Source="{Binding Path=TileArray[ 3].FrontImage}"/></Button>
+                <Button Grid.Row="0" Grid.Column="4"><Image Source="{Binding Path=TileArray[ 4].FrontImage}"/></Button>
+                <Button Grid.Row="0" Grid.Column="5"><Image Source="{Binding Path=TileArray[ 5].FrontImage}"/></Button>
+                <Button Grid.Row="0" Grid.Column="6"><Image Source="{Binding Path=TileArray[ 6].FrontImage}"/></Button>
+                <Button Grid.Row="0" Grid.Column="7"><Image Source="{Binding Path=TileArray[ 7].FrontImage}"/></Button>
+                <Button Grid.Row="0" Grid.Column="8"><Image Source="{Binding Path=TileArray[ 8].FrontImage}"/></Button>
+                <Button Grid.Row="0" Grid.Column="9"><Image Source="{Binding Path=TileArray[ 9].FrontImage}"/></Button>
+                <Button Grid.Row="1" Grid.Column="0"><Image Source="{Binding Path=TileArray[10].FrontImage}"/></Button>
+                <Button Grid.Row="1" Grid.Column="1"><Image Source="{Binding Path=TileArray[11].FrontImage}"/></Button>
+                <Button Grid.Row="1" Grid.Column="2"><Image Source="{Binding Path=TileArray[12].FrontImage}"/></Button>
+                <Button Grid.Row="1" Grid.Column="3"><Image Source="{Binding Path=TileArray[13].FrontImage}"/></Button>
+                <Button Grid.Row="1" Grid.Column="4"><Image Source="{Binding Path=TileArray[14].FrontImage}"/></Button>
+                <Button Grid.Row="1" Grid.Column="5"><Image Source="{Binding Path=TileArray[15].FrontImage}"/></Button>
+                <Button Grid.Row="1" Grid.Column="6"><Image Source="{Binding Path=TileArray[16].FrontImage}"/></Button>
+                <Button Grid.Row="1" Grid.Column="7"><Image Source="{Binding Path=TileArray[17].FrontImage}"/></Button>
+                <Button Grid.Row="1" Grid.Column="8"><Image Source="{Binding Path=TileArray[18].FrontImage}"/></Button>
+                <Button Grid.Row="1" Grid.Column="9"><Image Source="{Binding Path=TileArray[19].FrontImage}"/></Button>
+                <Button Grid.Row="2" Grid.Column="0"><Image Source="{Binding Path=TileArray[20].FrontImage}"/></Button>
+                <Button Grid.Row="2" Grid.Column="1"><Image Source="{Binding Path=TileArray[21].FrontImage}"/></Button>
+                <Button Grid.Row="2" Grid.Column="2"><Image Source="{Binding Path=TileArray[22].FrontImage}"/></Button>
+                <Button Grid.Row="2" Grid.Column="3"><Image Source="{Binding Path=TileArray[23].FrontImage}"/></Button>
+                <Button Grid.Row="2" Grid.Column="4"><Image Source="{Binding Path=TileArray[24].FrontImage}"/></Button>
+                <Button Grid.Row="2" Grid.Column="5"><Image Source="{Binding Path=TileArray[25].FrontImage}"/></Button>
+                <Button Grid.Row="2" Grid.Column="6"><Image Source="{Binding Path=TileArray[26].FrontImage}"/></Button>
+                <Button Grid.Row="2" Grid.Column="7"><Image Source="{Binding Path=TileArray[27].FrontImage}"/></Button>
+                <Button Grid.Row="2" Grid.Column="8"><Image Source="{Binding Path=TileArray[28].FrontImage}"/></Button>
+                <Button Grid.Row="2" Grid.Column="9"><Image Source="{Binding Path=TileArray[29].FrontImage}"/></Button>
+                <Button Grid.Row="3" Grid.Column="0"><Image Source="{Binding Path=TileArray[30].FrontImage}"/></Button>
+                <Button Grid.Row="3" Grid.Column="1"><Image Source="{Binding Path=TileArray[31].FrontImage}"/></Button>
+                <Button Grid.Row="3" Grid.Column="2"><Image Source="{Binding Path=TileArray[32].FrontImage}"/></Button>
+                <Button Grid.Row="3" Grid.Column="3"><Image Source="{Binding Path=TileArray[33].FrontImage}"/></Button>
+                <Button Grid.Row="3" Grid.Column="4"><Image Source="{Binding Path=TileArray[34].FrontImage}"/></Button>
+                <Button Grid.Row="3" Grid.Column="5"><Image Source="{Binding Path=TileArray[35].FrontImage}"/></Button>
+                <Button Grid.Row="3" Grid.Column="6"><Image Source="{Binding Path=TileArray[36].FrontImage}"/></Button>
+            </Grid>
+        </Grid>
+        <DockPanel Grid.Row="1">
+            <Grid DockPanel.Dock="Right">
+                
+            </Grid>
+            <Grid DockPanel.Dock="Right">
+                
+            </Grid>
+            <Grid>
+                
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>
