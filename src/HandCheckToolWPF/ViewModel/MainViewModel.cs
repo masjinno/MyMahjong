@@ -21,10 +21,40 @@ namespace HandCheckToolWPF.ViewModel
         /// </summary>
         public Tile[] TileArray
         {
-            get { return _tileArray; }
-            set { SetProperty(ref _tileArray, value); }
+            get { return this._tileArray; }
+            set { SetProperty(ref this._tileArray, value); }
         }
         private Tile[] _tileArray;
+
+        /// <summary>
+        /// 和了牌
+        /// </summary>
+        public Tile WinningTile
+        {
+            get { return this._winningTile; }
+            set { SetProperty(ref this._winningTile, value); }
+        }
+        private Tile _winningTile;
+
+        /// <summary>
+        /// 門前手牌
+        /// </summary>
+        public Tile[] ConcealedTileArray
+        {
+            get { return this._concealedTileArray; }
+            set { SetProperty(ref this._concealedTileArray, value); }
+        }
+        private Tile[] _concealedTileArray;
+
+        /// <summary>
+        /// ドラ表示牌
+        /// </summary>
+        public Tile[,] DoraTileArray
+        {
+            get { return this._doraTileArray; }
+            set { SetProperty(ref this._doraTileArray, value); }
+        }
+        private Tile[,] _doraTileArray;
 
         /// <summary>
         /// コンストラクタ
@@ -32,48 +62,94 @@ namespace HandCheckToolWPF.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            TileArray = new Tile[37];
-            for (int i = 0; i < TileArray.Count(); i++)
+            /// TileArrayメンバ初期化
+            this.InitializeTileArray();
+
+            /// デバッグ用の代入
+            this.WinningTile = this.TileArray[0];
+
+            this.ConcealedTileArray = new Tile[13];
+            for (int i=0; i<this.ConcealedTileArray.Count(); i++)
             {
-                TileArray[i] = new Tile();
+                /// デバッグ用の代入
+                this.ConcealedTileArray[i] = this.TileArray[i + 10];
             }
-            TileArray[ 0].Kind = Tile.Kinds.Character1;  TileArray[ 0].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_00_1m.png");
-            TileArray[ 1].Kind = Tile.Kinds.Character2;  TileArray[ 1].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_01_2m.png");
-            TileArray[ 2].Kind = Tile.Kinds.Character3;  TileArray[ 2].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_02_3m.png");
-            TileArray[ 3].Kind = Tile.Kinds.Character4;  TileArray[ 3].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_03_4m.png");
-            TileArray[ 4].Kind = Tile.Kinds.Character5;  TileArray[ 4].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_04_5m.png");
-            TileArray[ 5].Kind = Tile.Kinds.Character5;  TileArray[ 5].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_04_5m_r.png");
-            TileArray[ 6].Kind = Tile.Kinds.Character6;  TileArray[ 6].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_05_6m.png");
-            TileArray[ 7].Kind = Tile.Kinds.Character7;  TileArray[ 7].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_06_7m.png");
-            TileArray[ 8].Kind = Tile.Kinds.Character8;  TileArray[ 8].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_07_8m.png");
-            TileArray[ 9].Kind = Tile.Kinds.Character9;  TileArray[ 9].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_08_9m.png");
-            TileArray[10].Kind = Tile.Kinds.Circle1;     TileArray[10].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_09_1p.png");
-            TileArray[11].Kind = Tile.Kinds.Circle2;     TileArray[11].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_10_2p.png");
-            TileArray[12].Kind = Tile.Kinds.Circle3;     TileArray[12].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_11_3p.png");
-            TileArray[13].Kind = Tile.Kinds.Circle4;     TileArray[13].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_12_4p.png");
-            TileArray[14].Kind = Tile.Kinds.Circle5;     TileArray[14].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_13_5p.png");
-            TileArray[15].Kind = Tile.Kinds.Circle5;     TileArray[15].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_13_5p_r.png");
-            TileArray[16].Kind = Tile.Kinds.Circle6;     TileArray[16].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_14_6p.png");
-            TileArray[17].Kind = Tile.Kinds.Circle7;     TileArray[17].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_15_7p.png");
-            TileArray[18].Kind = Tile.Kinds.Circle8;     TileArray[18].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_16_8p.png");
-            TileArray[19].Kind = Tile.Kinds.Circle9;     TileArray[19].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_17_9p.png");
-            TileArray[20].Kind = Tile.Kinds.Bamboo1;     TileArray[20].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_18_1s.png");
-            TileArray[21].Kind = Tile.Kinds.Bamboo2;     TileArray[21].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_19_2s.png");
-            TileArray[22].Kind = Tile.Kinds.Bamboo3;     TileArray[22].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_20_3s.png");
-            TileArray[23].Kind = Tile.Kinds.Bamboo4;     TileArray[23].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_21_4s.png");
-            TileArray[24].Kind = Tile.Kinds.Bamboo5;     TileArray[24].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_22_5s.png");
-            TileArray[25].Kind = Tile.Kinds.Bamboo5;     TileArray[25].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_22_5s_r.png");
-            TileArray[26].Kind = Tile.Kinds.Bamboo6;     TileArray[26].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_23_6s.png");
-            TileArray[27].Kind = Tile.Kinds.Bamboo7;     TileArray[27].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_24_7s.png");
-            TileArray[28].Kind = Tile.Kinds.Bamboo8;     TileArray[28].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_25_8s.png");
-            TileArray[29].Kind = Tile.Kinds.Bamboo9;     TileArray[29].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_26_9s.png");
-            TileArray[30].Kind = Tile.Kinds.East;        TileArray[30].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_27_e.png");
-            TileArray[31].Kind = Tile.Kinds.South;       TileArray[31].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_28_s.png");
-            TileArray[32].Kind = Tile.Kinds.West;        TileArray[32].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_29_w.png");
-            TileArray[33].Kind = Tile.Kinds.North;       TileArray[33].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_30_n.png");
-            TileArray[34].Kind = Tile.Kinds.WhiteDragon; TileArray[34].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_31_wd.png");
-            TileArray[35].Kind = Tile.Kinds.GreenDragon; TileArray[35].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_32_gd.png");
-            TileArray[36].Kind = Tile.Kinds.RedDragon;   TileArray[36].FrontImage = this.GetImageSource(@"..\..\Resource\Image\Tile\tile_33_rd.png");
+
+            /// ドラ表示牌の初期化
+            this.DoraTileArray = new Tile[2, 5];
+            for (int i = 0; i < this.DoraTileArray.GetLength(0); i++)
+            {
+                for (int j = 0; j < this.DoraTileArray.GetLength(1); j++)
+                {
+                    /// 
+                    this.DoraTileArray[i, j] = this.TileArray[0];
+                }
+            }
+        }
+
+        /// <summary>
+        /// Tile型初期化用のデータ郡
+        /// </summary>
+        struct TileDatas
+        {
+            public Tile.Kinds kinds;
+            public string frontImagePath;
+        }
+        /// <summary>
+        /// TileArrayメンバの初期化
+        /// </summary>
+        private void InitializeTileArray()
+        {
+            const int TILE_NUM = 37;
+            Dictionary<int, TileDatas> TileArrayKindsDictionary = new Dictionary<int, TileDatas>()
+            {
+                { 0, new TileDatas{kinds = Tile.Kinds.Character1 , frontImagePath = @"..\..\Resource\Image\Tile\tile_00_1m.png"   } },
+                { 1, new TileDatas{kinds = Tile.Kinds.Character2 , frontImagePath = @"..\..\Resource\Image\Tile\tile_01_2m.png"   } },
+                { 2, new TileDatas{kinds = Tile.Kinds.Character3 , frontImagePath = @"..\..\Resource\Image\Tile\tile_02_3m.png"   } },
+                { 3, new TileDatas{kinds = Tile.Kinds.Character4 , frontImagePath = @"..\..\Resource\Image\Tile\tile_03_4m.png"   } },
+                { 4, new TileDatas{kinds = Tile.Kinds.Character5 , frontImagePath = @"..\..\Resource\Image\Tile\tile_04_5m.png"   } },
+                { 5, new TileDatas{kinds = Tile.Kinds.Character5 , frontImagePath = @"..\..\Resource\Image\Tile\tile_04_5m_r.png" } },
+                { 6, new TileDatas{kinds = Tile.Kinds.Character6 , frontImagePath = @"..\..\Resource\Image\Tile\tile_05_6m.png"   } },
+                { 7, new TileDatas{kinds = Tile.Kinds.Character7 , frontImagePath = @"..\..\Resource\Image\Tile\tile_06_7m.png"   } },
+                { 8, new TileDatas{kinds = Tile.Kinds.Character8 , frontImagePath = @"..\..\Resource\Image\Tile\tile_07_8m.png"   } },
+                { 9, new TileDatas{kinds = Tile.Kinds.Character9 , frontImagePath = @"..\..\Resource\Image\Tile\tile_08_9m.png"   } },
+                {10, new TileDatas{kinds = Tile.Kinds.Circle1    , frontImagePath = @"..\..\Resource\Image\Tile\tile_09_1p.png"   } },
+                {11, new TileDatas{kinds = Tile.Kinds.Circle2    , frontImagePath = @"..\..\Resource\Image\Tile\tile_10_2p.png"   } },
+                {12, new TileDatas{kinds = Tile.Kinds.Circle3    , frontImagePath = @"..\..\Resource\Image\Tile\tile_11_3p.png"   } },
+                {13, new TileDatas{kinds = Tile.Kinds.Circle4    , frontImagePath = @"..\..\Resource\Image\Tile\tile_12_4p.png"   } },
+                {14, new TileDatas{kinds = Tile.Kinds.Circle5    , frontImagePath = @"..\..\Resource\Image\Tile\tile_13_5p.png"   } },
+                {15, new TileDatas{kinds = Tile.Kinds.Circle5    , frontImagePath = @"..\..\Resource\Image\Tile\tile_13_5p_r.png" } },
+                {16, new TileDatas{kinds = Tile.Kinds.Circle6    , frontImagePath = @"..\..\Resource\Image\Tile\tile_14_6p.png"   } },
+                {17, new TileDatas{kinds = Tile.Kinds.Circle7    , frontImagePath = @"..\..\Resource\Image\Tile\tile_15_7p.png"   } },
+                {18, new TileDatas{kinds = Tile.Kinds.Circle8    , frontImagePath = @"..\..\Resource\Image\Tile\tile_16_8p.png"   } },
+                {19, new TileDatas{kinds = Tile.Kinds.Circle9    , frontImagePath = @"..\..\Resource\Image\Tile\tile_17_9p.png"   } },
+                {20, new TileDatas{kinds = Tile.Kinds.Bamboo1    , frontImagePath = @"..\..\Resource\Image\Tile\tile_18_1s.png"   } },
+                {21, new TileDatas{kinds = Tile.Kinds.Bamboo2    , frontImagePath = @"..\..\Resource\Image\Tile\tile_19_2s.png"   } },
+                {22, new TileDatas{kinds = Tile.Kinds.Bamboo3    , frontImagePath = @"..\..\Resource\Image\Tile\tile_20_3s.png"   } },
+                {23, new TileDatas{kinds = Tile.Kinds.Bamboo4    , frontImagePath = @"..\..\Resource\Image\Tile\tile_21_4s.png"   } },
+                {24, new TileDatas{kinds = Tile.Kinds.Bamboo5    , frontImagePath = @"..\..\Resource\Image\Tile\tile_22_5s.png"   } },
+                {25, new TileDatas{kinds = Tile.Kinds.Bamboo5    , frontImagePath = @"..\..\Resource\Image\Tile\tile_22_5s_r.png" } },
+                {26, new TileDatas{kinds = Tile.Kinds.Bamboo6    , frontImagePath = @"..\..\Resource\Image\Tile\tile_23_6s.png"   } },
+                {27, new TileDatas{kinds = Tile.Kinds.Bamboo7    , frontImagePath = @"..\..\Resource\Image\Tile\tile_24_7s.png"   } },
+                {28, new TileDatas{kinds = Tile.Kinds.Bamboo8    , frontImagePath = @"..\..\Resource\Image\Tile\tile_25_8s.png"   } },
+                {29, new TileDatas{kinds = Tile.Kinds.Bamboo9    , frontImagePath = @"..\..\Resource\Image\Tile\tile_26_9s.png"   } },
+                {30, new TileDatas{kinds = Tile.Kinds.East       , frontImagePath = @"..\..\Resource\Image\Tile\tile_27_e.png"    } },
+                {31, new TileDatas{kinds = Tile.Kinds.South      , frontImagePath = @"..\..\Resource\Image\Tile\tile_28_s.png"    } },
+                {32, new TileDatas{kinds = Tile.Kinds.West       , frontImagePath = @"..\..\Resource\Image\Tile\tile_29_w.png"    } },
+                {33, new TileDatas{kinds = Tile.Kinds.North      , frontImagePath = @"..\..\Resource\Image\Tile\tile_30_n.png"    } },
+                {34, new TileDatas{kinds = Tile.Kinds.WhiteDragon, frontImagePath = @"..\..\Resource\Image\Tile\tile_31_wd.png"   } },
+                {35, new TileDatas{kinds = Tile.Kinds.GreenDragon, frontImagePath = @"..\..\Resource\Image\Tile\tile_32_gd.png"   } },
+                {36, new TileDatas{kinds = Tile.Kinds.RedDragon  , frontImagePath = @"..\..\Resource\Image\Tile\tile_33_rd.png"   } }
+            };
+
+            /// 選択牌一覧
+            this.TileArray = new Tile[TILE_NUM];
+            for (int i = 0; i < this.TileArray.Count(); i++)
+            {
+                this.TileArray[i] = new Tile();
+                this.TileArray[i].Kind = TileArrayKindsDictionary[i].kinds;
+                this.TileArray[i].FrontImage = this.GetImageSource(TileArrayKindsDictionary[i].frontImagePath);
+            }
         }
 
         /// <summary>
