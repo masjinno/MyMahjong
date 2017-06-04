@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -27,6 +28,7 @@ namespace HandCheckToolWPF.ViewModel
         private Tile[] _tileArray;
 
         /// <summary>
+        /// 【Bindingプロパティ】
         /// 和了牌
         /// </summary>
         public Tile WinningTile
@@ -37,6 +39,7 @@ namespace HandCheckToolWPF.ViewModel
         private Tile _winningTile;
 
         /// <summary>
+        /// 【Bindingプロパティ】
         /// 門前手牌
         /// </summary>
         public Tile[] ConcealedTileArray
@@ -47,6 +50,7 @@ namespace HandCheckToolWPF.ViewModel
         private Tile[] _concealedTileArray;
 
         /// <summary>
+        /// 【Bindingプロパティ】
         /// ドラ表示牌
         /// </summary>
         public Tile[,] DoraTileArray
@@ -55,6 +59,38 @@ namespace HandCheckToolWPF.ViewModel
             set { SetProperty(ref this._doraTileArray, value); }
         }
         private Tile[,] _doraTileArray;
+
+        /// <summary>
+        /// 【Bindingコマンド】
+        /// 聴牌判定コマンド
+        /// </summary>
+        public ICommand CheckWaitingHandCommand
+        {
+            get
+            {
+                return new DelegateCommand(() =>
+                {
+                    bool ret = MahjongLogicUtility.IsWaitingHand(ConcealedTileArray, new TileSet[0]);
+                    System.Windows.MessageBox.Show(ret.ToString());
+                });
+            }
+        }
+
+        /// <summary>
+        /// 【Bindingコマンド】
+        /// 和了宣言コマンド
+        /// </summary>
+        public ICommand DeclareWinCommand
+        {
+            get
+            {
+                return new DelegateCommand(() =>
+                {
+                    bool ret = MahjongLogicUtility.IsWonHand(ConcealedTileArray, new TileSet[0], WinningTile);
+                    System.Windows.MessageBox.Show(ret.ToString());
+                });
+            }
+        }
 
         /// <summary>
         /// コンストラクタ
@@ -66,7 +102,7 @@ namespace HandCheckToolWPF.ViewModel
             this.InitializeTileArray();
 
             /// デバッグ用の代入
-            this.WinningTile = this.TileArray[0];
+            this.WinningTile = this.TileArray[14];
 
             this.ConcealedTileArray = new Tile[13];
             for (int i=0; i<this.ConcealedTileArray.Count(); i++)
