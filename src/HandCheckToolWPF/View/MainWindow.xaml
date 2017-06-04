@@ -8,7 +8,7 @@
         xmlns:vm="clr-namespace:HandCheckToolWPF.ViewModel"
         mc:Ignorable="d"
         Title="Hand Check Tool"
-        Width="1028"
+        Width="1160"
         Height="600">
     <Window.DataContext>
         <vm:MainViewModel/>
@@ -18,12 +18,12 @@
             <RowDefinition Height="420"/>
             <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" ShowGridLines="True">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="431"/>
             </Grid.ColumnDefinitions>
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="90"/>
                     <RowDefinition Height="90"/>
@@ -80,16 +80,180 @@
                 <Button Grid.Row="3" Grid.Column="5"><Image Source="{Binding Path=TileArray[35].FrontImage}"/></Button>
                 <Button Grid.Row="3" Grid.Column="6"><Image Source="{Binding Path=TileArray[36].FrontImage}"/></Button>
             </Grid>
+            <DockPanel Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <GroupBox DockPanel.Dock="Top" Header="設定" IsEnabled="False" FontSize="14" Margin="8,0">
+                    <StackPanel>
+                        <WrapPanel Orientation="Horizontal">
+                            <WrapPanel Orientation="Horizontal">
+                                <GroupBox Header="場風" HorizontalAlignment="Left" Margin="0,0,8,0">
+                                    <StackPanel Orientation="Vertical">
+                                        <RadioButton Content="東場" Margin="0,0,8,0" IsChecked="True"/>
+                                        <RadioButton Content="南場" Margin="0,0,8,0" IsChecked="False"/>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Header="自風" HorizontalAlignment="Left" Margin="0,0,8,0">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <RadioButton Grid.Row="0" Grid.Column="0" Content="東" Margin="0,0,8,0" IsChecked="True"/>
+                                        <RadioButton Grid.Row="0" Grid.Column="1" Content="南" Margin="0,0,8,0" IsChecked="False"/>
+                                        <RadioButton Grid.Row="1" Grid.Column="0" Content="西" Margin="0,0,8,0" IsChecked="False"/>
+                                        <RadioButton Grid.Row="1" Grid.Column="1" Content="北" Margin="0,0,8,0" IsChecked="False"/>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Header="親子" HorizontalAlignment="Left" Margin="0,0,8,0">
+                                    <StackPanel Orientation="Vertical">
+                                        <RadioButton Content="親" Margin="0,0,8,0" IsChecked="True"/>
+                                        <RadioButton Content="子" Margin="0,0,8,0" IsChecked="False"/>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Header="和了" HorizontalAlignment="Left" Margin="0,0,8,0">
+                                    <StackPanel Orientation="Vertical">
+                                        <RadioButton Content="自摸" Margin="0,0,8,0" IsChecked="True"/>
+                                        <RadioButton Content="ロン" Margin="0,0,8,0" IsChecked="False"/>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Header="ドラ表示牌">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60"/>
+                                            <RowDefinition Height="60"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="16"/>
+                                            <ColumnDefinition Width="44"/>
+                                            <ColumnDefinition Width="44"/>
+                                            <ColumnDefinition Width="44"/>
+                                            <ColumnDefinition Width="44"/>
+                                            <ColumnDefinition Width="44"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="表" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <Image Grid.Row="0" Grid.Column="1" />
+                                        <Image Grid.Row="0" Grid.Column="2" />
+                                        <Image Grid.Row="0" Grid.Column="3" />
+                                        <Image Grid.Row="0" Grid.Column="4" />
+                                        <Image Grid.Row="0" Grid.Column="5" />
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="裏" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <Image Grid.Row="1" Grid.Column="1" />
+                                        <Image Grid.Row="1" Grid.Column="2" />
+                                        <Image Grid.Row="1" Grid.Column="3" />
+                                        <Image Grid.Row="1" Grid.Column="4" />
+                                        <Image Grid.Row="1" Grid.Column="5" />
+                                    </Grid>
+                                </GroupBox>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Vertical">
+                                <CheckBox Content="天和" IsChecked="False" Margin="0,0,8,0"/>
+                                <CheckBox Content="地和" IsChecked="False" Margin="0,0,8,0"/>
+                                <CheckBox Content="W立直" IsChecked="False" Margin="0,0,8,0"/>
+                                <CheckBox Content="立直" IsChecked="False" Margin="0,0,8,0"/>
+                                <CheckBox Content="一発" IsChecked="False" Margin="0,0,8,0"/>
+                                <CheckBox Content="海底撈月" IsChecked="False" Margin="0,0,8,0"/>
+                                <CheckBox Content="河底撈魚" IsChecked="False" Margin="0,0,8,0"/>
+                                <CheckBox Content="嶺上開花" IsChecked="False" Margin="0,0,8,0"/>
+                                <CheckBox Content="槍槓" IsChecked="False" Margin="0,0,8,0"/>
+                            </WrapPanel>
+                        </WrapPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox DockPanel.Dock="Top" Header="麻雀牌選択モード" Margin="8,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Grid Grid.Column="0" Margin="0,0,8,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <RadioButton Grid.Row="0" Content="門前牌" GroupName="TileSelectionMode" IsChecked="True" VerticalAlignment="Center"/>
+                            <RadioButton Grid.Row="1" Content="和了牌" GroupName="TileSelectionMode" IsChecked="False" VerticalAlignment="Center"/>
+                        </Grid>
+                        <GroupBox Grid.Column="1" IsEnabled="False" Margin="0,0,8,0">
+                            <GroupBox.Header>
+                                <RadioButton Content="晒す牌" GroupName="TileSelectionMode" IsChecked="False"/>
+                            </GroupBox.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton Content="ポン" IsChecked="False" Margin="0,0,8,0"/>
+                                <RadioButton Content="チー" IsChecked="False" Margin="0,0,8,0"/>
+                                <RadioButton Content="暗槓" IsChecked="False" Margin="0,0,8,0"/>
+                                <RadioButton Content="明槓" IsChecked="False" Margin="0,0,8,0"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Grid.Column="2" IsEnabled="False" Margin="0,0,8,0">
+                            <GroupBox.Header>
+                                <RadioButton Content="ドラ表示牌" GroupName="TileSelectionMode" IsChecked="False"/>
+                            </GroupBox.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton Content="表ドラ" Margin="0,0,8,0" IsChecked="False"/>
+                                <RadioButton Content="裏ドラ" Margin="0,0,8,0" IsChecked="False"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </GroupBox>
+                <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                    <Button Content="聴牌判定" Width="75" Margin="8"/>
+                    <Button Content="和了宣言" Width="75" Margin="8,0,8,8"/>
+                    <Button Content="ლ(╹◡╹ლ)" IsEnabled="False" Width="75" Margin="8,0,8,8"/>
+                </StackPanel>
+                <DockPanel IsEnabled="False" Margin="2,0,0,0">
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="36">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="FontFamily" Value="HGPSoeiKakupoptai"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock Margin="0,0,12,0">
+                            <Run Text="40"/>
+                            <Run Text="符"/>
+                        </TextBlock>
+                        <TextBlock Margin="0,0,12,0">
+                            <Run Text="4"/>
+                            <Run Text="翻"/>
+                        </TextBlock>
+                        <TextBlock Text="満貫" Margin="0,0,12,0"/>
+                        <TextBlock Text="（門前）" Margin="0,0,12,0"/>
+                        <TextBlock Text="（食い下がり）" Margin="0,0,12,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                    <WrapPanel Orientation="Vertical" Margin="8,0,0,0"/>
+                </DockPanel>
+            </DockPanel>
         </Grid>
         <DockPanel Grid.Row="1">
-            <Grid DockPanel.Dock="Right">
-                
+            <Grid DockPanel.Dock="Left">
+                <!-- 門前手牌 -->
+                <TextBlock Text="門前の手牌" FontSize="16" Margin="20,3,0,0"/>
+                <StackPanel Orientation="Horizontal" Height="90" Margin="20,0,10,0">
+                    <Image Source="{Binding Path=ConcealedTileArray[ 0].FrontImage}"/>
+                    <Image Source="{Binding Path=ConcealedTileArray[ 1].FrontImage}"/>
+                    <Image Source="{Binding Path=ConcealedTileArray[ 2].FrontImage}"/>
+                    <Image Source="{Binding Path=ConcealedTileArray[ 3].FrontImage}"/>
+                    <Image Source="{Binding Path=ConcealedTileArray[ 4].FrontImage}"/>
+                    <Image Source="{Binding Path=ConcealedTileArray[ 5].FrontImage}"/>
+                    <Image Source="{Binding Path=ConcealedTileArray[ 6].FrontImage}"/>
+                    <Image Source="{Binding Path=ConcealedTileArray[ 7].FrontImage}"/>
+                    <Image Source="{Binding Path=ConcealedTileArray[ 8].FrontImage}"/>
+                    <Image Source="{Binding Path=ConcealedTileArray[ 9].FrontImage}"/>
+                    <Image Source="{Binding Path=ConcealedTileArray[10].FrontImage}"/>
+                    <Image Source="{Binding Path=ConcealedTileArray[11].FrontImage}"/>
+                    <Image Source="{Binding Path=ConcealedTileArray[12].FrontImage}"/>
+                </StackPanel>
             </Grid>
-            <Grid DockPanel.Dock="Right">
-                
+            <Grid DockPanel.Dock="Left">
+                <!-- 和了牌 -->
+                <TextBlock Text="和了牌" FontSize="16" Margin="10,3,0,0"/>
+                <Image Source="{Binding Path=WinningTile.FrontImage}" Height="90" Margin="10,0,20,0"/>
             </Grid>
             <Grid>
-                
+                <!-- 鳴いた牌 -->
+                <TextBlock Text="鳴いた牌" FontSize="16" Margin="0,3,0,0"/>
+                <StackPanel Orientation="Horizontal" Height="90" Margin="0,0,20,0" RenderTransformOrigin="0.5,0.5">
+                </StackPanel>
             </Grid>
         </DockPanel>
     </Grid>
