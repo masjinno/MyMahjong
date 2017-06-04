@@ -95,7 +95,7 @@ namespace MyMahjong
             bool[] isUsed = new bool[hands.Count()];
             /// 探索した面子構成
             List<TileSet> tempTileSets = new List<TileSet>();
-            for (int pairTileIndex = 0; pairTileIndex < hands.Count(); pairTileIndex++)
+            for (int pairTileIndex = 0; pairTileIndex < hands.Count() - 1; pairTileIndex++)
             {
                 /// 面子構成判定配列の初期化
                 for (int i = 0; i < isUsed.Count(); i++) isUsed[i] = false;
@@ -108,7 +108,7 @@ namespace MyMahjong
                 }
 
                 /// 面子判定
-                for (int tileSetCheckIndex = 0; tileSetCheckIndex < hands.Count() * 2; tileSetCheckIndex++)
+                for (int tileSetCheckIndex = 0; tileSetCheckIndex < hands.Count(); tileSetCheckIndex++)
                 {
                     /// 面子判定済みなら、面子判定から除外
                     if (isUsed[tileSetCheckIndex])
@@ -117,23 +117,29 @@ namespace MyMahjong
                     }
 
                     /// 刻子 & 順子チェック
-                    TileSet.Kinds[] kindsArray = new TileSet.Kinds[2] { TileSet.Kinds.Pung, TileSet.Kinds.Chow };
-                    foreach (TileSet.Kinds k in kindsArray)
+                    if (tileSetCheckIndex + 2 < hands.Count())
                     {
-                        switch (k)
+                        TileSet.Kinds[] kindsArray = new TileSet.Kinds[2] { TileSet.Kinds.Pung, TileSet.Kinds.Chow };
+                        foreach (TileSet.Kinds k in kindsArray)
                         {
-                            case TileSet.Kinds.Pung:
-                                if (!IsPung(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex))
+                            if (!isUsed[tileSetCheckIndex])
+                            {
+                                switch (k)
                                 {
-                                    IsChow(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex);
+                                    case TileSet.Kinds.Pung:
+                                        if (!IsPung(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex))
+                                        {
+                                            IsChow(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex);
+                                        }
+                                        break;
+                                    case TileSet.Kinds.Chow:
+                                        if (!IsChow(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex))
+                                        {
+                                            IsPung(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex);
+                                        }
+                                        break;
                                 }
-                                break;
-                            case TileSet.Kinds.Chow:
-                                if (!IsChow(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex))
-                                {
-                                    IsPung(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex);
-                                }
-                                break;
+                            }
                         }
                     }
                 }
@@ -225,7 +231,7 @@ namespace MyMahjong
                 {
                     /// do nothing
                 }
-                if (i % 2 == 0)
+                else if (i % 2 == 0)
                 {
                     if (hands[i - 1].Kind == hands[i].Kind)
                     {
@@ -304,7 +310,7 @@ namespace MyMahjong
             {
                 throw new ArgumentException("Array Arguments 'hands' and 'isUsed' count are not equaled.");
             }
-            if (index < 0 || index + 1 >= hands.Count())
+            if (index < 0 || index + 2 >= hands.Count())
             {
                 throw new ArgumentOutOfRangeException(string.Format("Argument 'index'{0} is invalid.", index));
             }
@@ -367,7 +373,7 @@ namespace MyMahjong
             {
                 throw new ArgumentException("Array Arguments 'hands' and 'isUsed' count are not equaled.");
             }
-            if (index < 0 || index + 1 >= hands.Count())
+            if (index < 0 || index + 2 >= hands.Count())
             {
                 throw new ArgumentOutOfRangeException(string.Format("Argument 'index'{0} is invalid.", index));
             }
@@ -390,13 +396,16 @@ namespace MyMahjong
             chowIndices[0] = index;
             for (int checkIndex = index + 1; checkIndex < hands.Count(); checkIndex++)
             {
-                if (hands[index].Number == hands[checkIndex].Number + num)
+                if (MahjongLogicUtility.IsSameType(hands[checkIndex], hands[index]) && !isUsed[checkIndex])
                 {
-                    chowIndices[num] = checkIndex;
-                    num++;
-                    if (num == 3)
+                    if (hands[checkIndex].Number == hands[index].Number + num)
                     {
-                        break;
+                        chowIndices[num] = checkIndex;
+                        num++;
+                        if (num == 3)
+                        {
+                            break;
+                        }
                     }
                 }
             }
@@ -405,13 +414,13 @@ namespace MyMahjong
             if (num == 3)
             {
                 Tile[] t = new Tile[3];
-                foreach (int i in chowIndices)
+                for (int i = 0; i < chowIndices.Count(); i++)
                 {
-                    isUsed[i] = true;
+                    isUsed[chowIndices[i]] = true;
                     t[i] = hands[chowIndices[i]];
                 }
                 TileSet ts = new TileSet();
-                ts.Kind = TileSet.Kinds.Pung;
+                ts.Kind = TileSet.Kinds.Chow;
                 ts.Tiles = t;
                 if (!ts.IsValidTileSet())
                 {
@@ -425,6 +434,21 @@ namespace MyMahjong
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// 同じ数牌の種類かチェックする
+        /// </summary>
+        /// <param name="a">チェック対象数牌A</param>
+        /// <param name="b">チェック対象数牌B</param>
+        /// <returns>チェック対象数牌Aとチェック対象数牌Bが同じ種類の数牌か  true:同じ種類  false:異なる種類</returns>
+        private static bool IsSameType(Tile a, Tile b)
+        {
+            bool ret = false;
+            ret |= a.IsCharacter && b.IsCharacter;
+            ret |= a.IsCircle && b.IsCircle;
+            ret |= a.IsBamboo && b.IsBamboo;
+            return ret;
         }
     }
 }
