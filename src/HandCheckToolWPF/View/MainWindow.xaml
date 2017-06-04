@@ -195,8 +195,8 @@
                     </StackPanel>
                 </GroupBox>
                 <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
-                    <Button Content="聴牌判定" Width="75" Margin="8"/>
-                    <Button Content="和了宣言" Width="75" Margin="8,0,8,8"/>
+                    <Button Content="聴牌判定" Width="75" Margin="8" Command="{Binding Path=CheckWaitingHandCommand}"/>
+                    <Button Content="和了宣言" Width="75" Margin="8,0,8,8" Command="{Binding Path=DeclareWinCommand}"/>
                     <Button Content="ლ(╹◡╹ლ)" IsEnabled="False" Width="75" Margin="8,0,8,8"/>
                 </StackPanel>
                 <DockPanel IsEnabled="False" Margin="2,0,0,0">
