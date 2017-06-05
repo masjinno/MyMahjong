@@ -53,12 +53,12 @@ namespace HandCheckToolWPF.ViewModel
         /// 【Bindingプロパティ】
         /// ドラ表示牌
         /// </summary>
-        public Tile[,] DoraTileArray
+        public Tile[,] DoraIndicatorArray
         {
-            get { return this._doraTileArray; }
-            set { SetProperty(ref this._doraTileArray, value); }
+            get { return this._doraIndicatorArray; }
+            set { SetProperty(ref this._doraIndicatorArray, value); }
         }
-        private Tile[,] _doraTileArray;
+        private Tile[,] _doraIndicatorArray;
 
         /// <summary>
         /// 【Bindingコマンド】
@@ -112,13 +112,13 @@ namespace HandCheckToolWPF.ViewModel
             }
 
             /// ドラ表示牌の初期化
-            this.DoraTileArray = new Tile[2, 5];
-            for (int i = 0; i < this.DoraTileArray.GetLength(0); i++)
+            this.DoraIndicatorArray = new Tile[2, 5];
+            for (int i = 0; i < this.DoraIndicatorArray.GetLength(0); i++)
             {
-                for (int j = 0; j < this.DoraTileArray.GetLength(1); j++)
+                for (int j = 0; j < this.DoraIndicatorArray.GetLength(1); j++)
                 {
                     /// 
-                    this.DoraTileArray[i, j] = this.TileArray[0];
+                    this.DoraIndicatorArray[i, j] = this.TileArray[0];
                 }
             }
         }
