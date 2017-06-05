@@ -93,6 +93,26 @@ namespace HandCheckToolWPF.ViewModel
         }
 
         /// <summary>
+        /// 【Bindingコマンド】
+        /// 牌ボタン選択コマンド
+        /// </summary>
+        public ICommand SelectTileCommand
+        {
+            get
+            {
+                return new DelegateCommand<object>((object parameter) =>
+                {
+                    int index;
+                    if (!int.TryParse(parameter as string, out index))
+                    {
+                        throw new ArgumentException(string.Format("To parse argument'{0}'({1}) as int failed.", nameof(parameter), parameter));
+                    }
+                    System.Windows.MessageBox.Show(index.ToString());
+                });
+            }
+        }
+
+        /// <summary>
         /// コンストラクタ
         /// ・変数の初期化
         /// </summary>
