@@ -169,12 +169,12 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <RadioButton Grid.Row="0" Content="門前牌" GroupName="TileSelectionMode" IsChecked="True" VerticalAlignment="Center"/>
-                            <RadioButton Grid.Row="1" Content="和了牌" GroupName="TileSelectionMode" IsChecked="False" VerticalAlignment="Center"/>
+                            <RadioButton Grid.Row="0" Content="門前牌" GroupName="TileSelectionMode" IsChecked="{Binding Path=IsSelectingConcealedTileMode}" VerticalAlignment="Center"/>
+                            <RadioButton Grid.Row="1" Content="和了牌" GroupName="TileSelectionMode" IsChecked="{Binding Path=IsSelectingWinningTileMode}" VerticalAlignment="Center"/>
                         </Grid>
                         <GroupBox Grid.Column="1" IsEnabled="False" Margin="0,0,8,0">
                             <GroupBox.Header>
-                                <RadioButton Content="晒す牌" GroupName="TileSelectionMode" IsChecked="False"/>
+                                <RadioButton Content="晒す牌" GroupName="TileSelectionMode" IsChecked="{Binding Path=IsSelectingOpenedTileMode}"/>
                             </GroupBox.Header>
                             <StackPanel Orientation="Horizontal">
                                 <RadioButton Content="ポン" IsChecked="False" Margin="0,0,8,0"/>
@@ -185,7 +185,7 @@
                         </GroupBox>
                         <GroupBox Grid.Column="2" IsEnabled="False" Margin="0,0,8,0">
                             <GroupBox.Header>
-                                <RadioButton Content="ドラ表示牌" GroupName="TileSelectionMode" IsChecked="False"/>
+                                <RadioButton Content="ドラ表示牌" GroupName="TileSelectionMode" IsChecked="{Binding Path=IsSelectingDoraIndicatorMode}"/>
                             </GroupBox.Header>
                             <StackPanel Orientation="Horizontal">
                                 <RadioButton Content="表ドラ" Margin="0,0,8,0" IsChecked="False"/>
