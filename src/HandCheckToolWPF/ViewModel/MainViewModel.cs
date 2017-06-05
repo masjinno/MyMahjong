@@ -16,6 +16,28 @@ namespace HandCheckToolWPF.ViewModel
 {
     class MainViewModel : BindableBase
     {
+        #region 型定義
+        /// <summary>
+        /// 牌選択モード
+        /// </summary>
+        enum TileSelectionMode
+        {
+            ConcealedTile,  // 手牌選択
+            WinningTile,    // 和了牌選択
+            OpenedTile,     // 鳴き牌選択
+            DoraIndicator   // ドラ表示牌選択
+        }
+
+        /// <summary>
+        /// ドラ表示牌選択モード
+        /// </summary>
+        enum DoraIndicatorSelectionMode
+        {
+            Obverse,    // 表ドラ
+            Reverse     // 裏ドラ
+        }
+        #endregion
+
         #region Bindingプロパティ
         /// <summary>
         /// 【Bindingプロパティ】
@@ -62,6 +84,48 @@ namespace HandCheckToolWPF.ViewModel
         private Tile[,] _doraIndicatorArray;
 
         /// <summary>
+        /// 【Bindingプロパティ】
+        /// 門前牌選択モードか
+        /// </summary>
+        public bool IsSelectingConcealedTileMode
+        {
+            get { return this._isSelectingConcealedTileMode; }
+            set { SetProperty(ref this._isSelectingConcealedTileMode, value); }
+        }
+        private bool _isSelectingConcealedTileMode;
+
+        /// <summary>
+        /// 【Bindingプロパティ】
+        /// 和了牌選択モードか
+        /// </summary>
+        public bool IsSelectingWinningTileMode
+        {
+            get { return this._isSelectingWinningTileMode; }
+            set { SetProperty(ref this._isSelectingWinningTileMode, value); }
+        }
+        private bool _isSelectingWinningTileMode;
+
+        /// <summary>
+        /// 【Bindingプロパティ】
+        /// 鳴き牌選択モードか
+        /// </summary>
+        public bool IsSelectingOpenedTileMode
+        {
+            get { return this._isSelectingOpenedTileMode; }
+            set { SetProperty(ref this._isSelectingOpenedTileMode, value); }
+        }
+        private bool _isSelectingOpenedTileMode;
+
+        /// <summary>
+        /// 【Bindingプロパティ】
+        /// ドラ表示牌選択モードか
+        /// </summary>
+        public bool IsSelectingDoraIndicatorMode
+        {
+            get { return this._isSelectingDoraIndicatorMode; }
+            set { SetProperty(ref this._isSelectingDoraIndicatorMode, value); }
+        }
+        private bool _isSelectingDoraIndicatorMode;
         #endregion
 
         #region Bindingコマンド
@@ -148,6 +212,9 @@ namespace HandCheckToolWPF.ViewModel
                     this.DoraIndicatorArray[i, j] = this.TileArray[0];
                 }
             }
+
+            /// 牌選択モードの初期化
+            InitializeSelectingTileMode();
         }
 
         /// <summary>
@@ -213,6 +280,17 @@ namespace HandCheckToolWPF.ViewModel
                 this.TileArray[i].Kind = TileArrayKindsDictionary[i].kinds;
                 this.TileArray[i].FrontImage = this.GetImageSource(TileArrayKindsDictionary[i].frontImagePath);
             }
+        }
+
+        /// <summary>
+        /// 牌選択モードの初期化
+        /// </summary>
+        private void InitializeSelectingTileMode()
+        {
+            this.IsSelectingConcealedTileMode = true;
+            this.IsSelectingWinningTileMode = false;
+            this.IsSelectingOpenedTileMode = false;
+            this.IsSelectingDoraIndicatorMode = false;
         }
 
         /// <summary>
