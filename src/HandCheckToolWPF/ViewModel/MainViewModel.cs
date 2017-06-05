@@ -16,6 +16,7 @@ namespace HandCheckToolWPF.ViewModel
 {
     class MainViewModel : BindableBase
     {
+        #region Bindingプロパティ
         /// <summary>
         /// 【Bindingプロパティ】
         /// 全種の牌データ
@@ -60,6 +61,10 @@ namespace HandCheckToolWPF.ViewModel
         }
         private Tile[,] _doraIndicatorArray;
 
+        /// <summary>
+        #endregion
+
+        #region Bindingコマンド
         /// <summary>
         /// 【Bindingコマンド】
         /// 聴牌判定コマンド
@@ -111,6 +116,7 @@ namespace HandCheckToolWPF.ViewModel
                 });
             }
         }
+        #endregion
 
         /// <summary>
         /// コンストラクタ
@@ -124,6 +130,7 @@ namespace HandCheckToolWPF.ViewModel
             /// デバッグ用の代入
             this.WinningTile = this.TileArray[14];
 
+            /// 手牌の初期化
             this.ConcealedTileArray = new Tile[13];
             for (int i=0; i<this.ConcealedTileArray.Count(); i++)
             {
