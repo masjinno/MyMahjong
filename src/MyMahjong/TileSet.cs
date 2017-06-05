@@ -18,10 +18,12 @@ namespace MyMahjong
         /// </summary>
         public enum Kinds
         {
-            Pair,   // 対子
-            Chow,   // 順子
-            Pung,   // 刻子
-            Kong    // 槓子
+            Pair,                   // 対子
+            Chow,                   // 順子
+            Pung,                   // 刻子
+            ConcealedKong,          // 暗槓
+            OpenedKongFromHand,     // 加槓
+            OpenedKongFromDiscard   // 大明槓
         }
 
         #endregion
@@ -63,7 +65,9 @@ namespace MyMahjong
                     case Kinds.Chow:
                     case Kinds.Pung:
                         return 3;
-                    case Kinds.Kong:
+                    case Kinds.ConcealedKong:
+                    case Kinds.OpenedKongFromHand:
+                    case Kinds.OpenedKongFromDiscard:
                         return 4;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(Kind), string.Format("Parameter '{0}'({1}) is out of range.", nameof(Kind), Kind));
@@ -113,7 +117,9 @@ namespace MyMahjong
                     case Kinds.Pung:
                         ret = (this.Tiles[0].Kind == this.Tiles[1].Kind) && (this.Tiles[0].Kind == this.Tiles[2].Kind);
                         break;
-                    case Kinds.Kong:
+                    case Kinds.ConcealedKong:
+                    case Kinds.OpenedKongFromHand:
+                    case Kinds.OpenedKongFromDiscard:
                         ret = (this.Tiles[0].Kind == this.Tiles[1].Kind) && (this.Tiles[0].Kind == this.Tiles[2].Kind) && (this.Tiles[0].Kind == this.Tiles[3].Kind);
                         break;
                     default:
