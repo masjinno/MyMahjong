@@ -53,18 +53,18 @@ namespace MyMahjong
                     throw new ArgumentOutOfRangeException(nameof(openedSets), string.Format("Argument {0} must not be Pair.", nameof(openedSets)));
                 }
             }
-            
+
+            /// 牌数チェック
+            int nTiles = 0;
+            nTiles += concealedTiles.Count() + openedSets.Count() * 3 + 1;
+            if (nTiles != 14) throw new ArgumentException("The number of tiles is invalid.");
+
             Tile[] hands = new Tile[concealedTiles.Count() + 1];
             concealedTiles.CopyTo(hands, 0);
             hands[concealedTiles.Count()] = drawnTile;
 
             /// 手牌をソート
             Array.Sort(hands, (a, b) => a.Index - b.Index);
-
-            /// 牌数チェック
-            int nTiles = 0;
-            nTiles += concealedTiles.Count() + openedSets.Count() * 3 + 1;
-            if (nTiles != 14) throw new ArgumentException("The number of tiles is invalid.");
 
             /// 国士無双チェック
             if (MahjongLogicUtility.IsThirteenOrphans(hands))
