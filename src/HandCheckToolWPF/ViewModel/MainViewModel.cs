@@ -390,34 +390,13 @@ namespace HandCheckToolWPF.ViewModel
                 /// 手配に追加
                 this.ConcealedTileArray[this.concealedTileNum] = addedTile;
                 //System.Collections.IComparer a = new delegate((a, b) => a.Index - b.Index);
-                Array.Sort(ConcealedTileArray, 0, this.concealedTileNum + 1, new TileIndexCompare());
+                Array.Sort(ConcealedTileArray, 0, this.concealedTileNum + 1, new Tile.TileIndexCompare());
                 RaisePropertyChanged("ConcealedTileArray");
                 this.concealedTileNum++;
             }
             else
             {
                 System.Windows.MessageBox.Show("手配枚数が上限に達しています。", "操作NG", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
-            }
-        }
-
-        /// <summary>
-        /// 牌ソート用比較クラス
-        /// </summary>
-        private class TileIndexCompare : System.Collections.IComparer
-        {
-            /// <summary>
-            /// Array.Sortで使用する
-            /// </summary>
-            /// <param name="x">比較対象1</param>
-            /// <param name="y">比較対象2</param>
-            /// <returns>正:<paramref name="x"/>が後ろ  負:<paramref name="y"/>が後ろ</returns>
-            public int Compare(object x, object y)
-            {
-                if (!(x is Tile) || !(y is Tile))
-                {
-                    throw new ArgumentException("Argument type is invalid.");
-                }
-                return (x as Tile).Index - (y as Tile).Index;
             }
         }
     }

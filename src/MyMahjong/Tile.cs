@@ -140,5 +140,26 @@ namespace MyMahjong
         public System.Windows.Media.ImageSource BackImage { get; set; }
 
         #endregion
+
+        /// <summary>
+        /// 牌ソート用比較クラス
+        /// </summary>
+        public class TileIndexCompare : System.Collections.IComparer
+        {
+            /// <summary>
+            /// Array.Sortで使用する
+            /// </summary>
+            /// <param name="x">比較対象1</param>
+            /// <param name="y">比較対象2</param>
+            /// <returns>正:<paramref name="x"/>が後ろ  負:<paramref name="y"/>が後ろ</returns>
+            public int Compare(object x, object y)
+            {
+                if (!(x is Tile) || !(y is Tile))
+                {
+                    throw new ArgumentException("Argument type is invalid.");
+                }
+                return (x as Tile).Index - (y as Tile).Index;
+            }
+        }
     }
 }
