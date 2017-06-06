@@ -336,9 +336,9 @@ namespace MyMahjong
             if (num == 3)
             {
                 Tile[] t = new Tile[3];
-                foreach (int i in pungIndices)
+                for (int i = 0; i < pungIndices.Count(); i++)
                 {
-                    isUsed[i] = true;
+                    isUsed[pungIndices[i]] = true;
                     t[i] = hands[pungIndices[i]];
                 }
                 TileSet ts = new TileSet();
