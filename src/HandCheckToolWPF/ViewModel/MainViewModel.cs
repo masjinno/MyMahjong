@@ -213,13 +213,14 @@ namespace HandCheckToolWPF.ViewModel
                         throw new ArgumentOutOfRangeException(string.Format("Argument'{0}'({1}) is out of range.\r\nRange is [{2},{3}).", nameof(parameter), index, 0, TileArray.Count()));
                     }
 
+                    /// 牌選択モードによって牌セット先を変更
                     switch (tileSelectionMode)
                     {
                         case TileSelectionMode.ConcealedTile:
                             AddConcealedTile(TileArray[index]);
                             break;
                         case TileSelectionMode.WinningTile:
-                            // TODO: 和了牌選択処理実装
+                            DrawWinningTile(TileArray[index]);
                             break;
                         case TileSelectionMode.OpenedTile:
                             // TODO: 鳴き牌選択処理実装
@@ -260,9 +261,6 @@ namespace HandCheckToolWPF.ViewModel
         {
             /// TileArrayメンバ初期化
             this.InitializeTileArray();
-
-            /// デバッグ用の代入
-            this.WinningTile = this.TileArray[14];
 
             /// 手牌の初期化
             concealedTileNumMax = 13;
@@ -398,6 +396,15 @@ namespace HandCheckToolWPF.ViewModel
             {
                 System.Windows.MessageBox.Show("手配枚数が上限に達しています。", "操作NG", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
             }
+        }
+
+        /// <summary>
+        /// 和了牌を設定する
+        /// </summary>
+        /// <param name="drawnTile">新たな和了牌</param>
+        private void DrawWinningTile(Tile drawnTile)
+        {
+            WinningTile = drawnTile;
         }
     }
 }
