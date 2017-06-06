@@ -90,7 +90,14 @@ namespace HandCheckToolWPF.ViewModel
         public bool IsSelectingConcealedTileMode
         {
             get { return this._isSelectingConcealedTileMode; }
-            set { SetProperty(ref this._isSelectingConcealedTileMode, value); }
+            set
+            {
+                if (value)
+                {
+                    tileSelectionMode = TileSelectionMode.ConcealedTile;
+                }
+                SetProperty(ref this._isSelectingConcealedTileMode, value);
+            }
         }
         private bool _isSelectingConcealedTileMode;
 
@@ -101,7 +108,14 @@ namespace HandCheckToolWPF.ViewModel
         public bool IsSelectingWinningTileMode
         {
             get { return this._isSelectingWinningTileMode; }
-            set { SetProperty(ref this._isSelectingWinningTileMode, value); }
+            set
+            {
+                if (value)
+                {
+                    tileSelectionMode = TileSelectionMode.WinningTile;
+                }
+                SetProperty(ref this._isSelectingWinningTileMode, value);
+            }
         }
         private bool _isSelectingWinningTileMode;
 
@@ -112,7 +126,14 @@ namespace HandCheckToolWPF.ViewModel
         public bool IsSelectingOpenedTileMode
         {
             get { return this._isSelectingOpenedTileMode; }
-            set { SetProperty(ref this._isSelectingOpenedTileMode, value); }
+            set
+            {
+                if (value)
+                {
+                    tileSelectionMode = TileSelectionMode.OpenedTile;
+                }
+                SetProperty(ref this._isSelectingOpenedTileMode, value);
+            }
         }
         private bool _isSelectingOpenedTileMode;
 
@@ -123,7 +144,14 @@ namespace HandCheckToolWPF.ViewModel
         public bool IsSelectingDoraIndicatorMode
         {
             get { return this._isSelectingDoraIndicatorMode; }
-            set { SetProperty(ref this._isSelectingDoraIndicatorMode, value); }
+            set
+            {
+                if (value)
+                {
+                    tileSelectionMode = TileSelectionMode.DoraIndicator;
+                }
+                SetProperty(ref this._isSelectingDoraIndicatorMode, value);
+            }
         }
         private bool _isSelectingDoraIndicatorMode;
         #endregion
@@ -171,16 +199,58 @@ namespace HandCheckToolWPF.ViewModel
             {
                 return new DelegateCommand<object>((object parameter) =>
                 {
-                    int index;
+                    int index;  /// 選択された牌の、牌一覧におけるインデックス
+
+                    /// コマンドパラメータからインデックスを取得
                     if (!int.TryParse(parameter as string, out index))
                     {
                         throw new ArgumentException(string.Format("To parse argument'{0}'({1}) as int failed.", nameof(parameter), parameter));
                     }
-                    System.Windows.MessageBox.Show(index.ToString());
+
+                    /// インデックスのバリデーション
+                    if (index < 0 || TileArray.Count() <= index)
+                    {
+                        throw new ArgumentOutOfRangeException(string.Format("Argument'{0}'({1}) is out of range.\r\nRange is [{2},{3}).", nameof(parameter), index, 0, TileArray.Count()));
+                    }
+
+                    switch (tileSelectionMode)
+                    {
+                        case TileSelectionMode.ConcealedTile:
+                            AddConcealedTile(TileArray[index]);
+                            break;
+                        case TileSelectionMode.WinningTile:
+                            // TODO: 和了牌選択処理実装
+                            break;
+                        case TileSelectionMode.OpenedTile:
+                            // TODO: 鳴き牌選択処理実装
+                            break;
+                        case TileSelectionMode.DoraIndicator:
+                            // TODO: ドラ表示牌選択処理実装
+                            break;
+                        default:
+                            throw new Exception("実装ミス");
+                    }
                 });
             }
         }
         #endregion
+
+        /// <summary>
+        /// 面前手配の枚数の最大値。
+        /// さらした牌の枚数に応じて変化する。
+        /// </summary>
+        private int concealedTileNumMax;
+
+        /// <summary>
+        /// 見た目上の面前手配の枚数。
+        /// 牌一覧から追加する度に増加する。
+        /// </summary>
+        private int concealedTileNum;
+
+        /// <summary>
+        /// 配選択モード
+        /// </summary>
+        private TileSelectionMode tileSelectionMode;
 
         /// <summary>
         /// コンストラクタ
@@ -195,12 +265,9 @@ namespace HandCheckToolWPF.ViewModel
             this.WinningTile = this.TileArray[14];
 
             /// 手牌の初期化
+            concealedTileNumMax = 13;
+            concealedTileNum = 0;
             this.ConcealedTileArray = new Tile[13];
-            for (int i=0; i<this.ConcealedTileArray.Count(); i++)
-            {
-                /// デバッグ用の代入
-                this.ConcealedTileArray[i] = this.TileArray[i + 10];
-            }
 
             /// ドラ表示牌の初期化
             this.DoraIndicatorArray = new Tile[2, 5];
@@ -310,6 +377,48 @@ namespace HandCheckToolWPF.ViewModel
                 bmpImage.EndInit();
             }
             return bmpImage;
+        }
+
+        /// <summary>
+        /// 面前手牌に牌を追加する
+        /// </summary>
+        /// <param name="addedTile">追加される牌</param>
+        private void AddConcealedTile(Tile addedTile)
+        {
+            if (this.concealedTileNum < this.concealedTileNumMax)
+            {
+                /// 手配に追加
+                this.ConcealedTileArray[this.concealedTileNum] = addedTile;
+                //System.Collections.IComparer a = new delegate((a, b) => a.Index - b.Index);
+                Array.Sort(ConcealedTileArray, 0, this.concealedTileNum + 1, new TileIndexCompare());
+                RaisePropertyChanged("ConcealedTileArray");
+                this.concealedTileNum++;
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("手配枚数が上限に達しています。", "操作NG", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+            }
+        }
+
+        /// <summary>
+        /// 牌ソート用比較クラス
+        /// </summary>
+        private class TileIndexCompare : System.Collections.IComparer
+        {
+            /// <summary>
+            /// Array.Sortで使用する
+            /// </summary>
+            /// <param name="x">比較対象1</param>
+            /// <param name="y">比較対象2</param>
+            /// <returns>正:<paramref name="x"/>が後ろ  負:<paramref name="y"/>が後ろ</returns>
+            public int Compare(object x, object y)
+            {
+                if (!(x is Tile) || !(y is Tile))
+                {
+                    throw new ArgumentException("Argument type is invalid.");
+                }
+                return (x as Tile).Index - (y as Tile).Index;
+            }
         }
     }
 }
