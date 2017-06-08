@@ -234,6 +234,31 @@ namespace HandCheckToolWPF.ViewModel
                 });
             }
         }
+
+        /// <summary>
+        /// 【Bindingコマンド】
+        /// 手牌を捨てるコマンド
+        /// </summary>
+        public ICommand DiscardCommand
+        {
+            get
+            {
+                return new DelegateCommand<object>((object parameter) =>
+                {
+                    int index;  /// 選択された牌の、手牌におけるインデックス
+
+                    /// コマンドパラメータからインデックスを取得
+                    if (!int.TryParse(parameter as string, out index))
+                    {
+                        throw new ArgumentException(string.Format("To parse argument'{0}'({1}) as int failed.", nameof(parameter), parameter));
+                    }
+
+                    this.DiscardConcealedTile(index);
+
+                    RaisePropertyChanged(nameof(ConcealedTileArray));
+                });
+            }
+        }
         #endregion
 
         /// <summary>
@@ -405,6 +430,25 @@ namespace HandCheckToolWPF.ViewModel
         private void DrawWinningTile(Tile drawnTile)
         {
             WinningTile = drawnTile;
+        }
+
+        /// <summary>
+        /// 手牌を1枚捨てる
+        /// </summary>
+        /// <param name="index">捨て牌の手牌インデックス</param>
+        private void DiscardConcealedTile(int index)
+        {
+            if (index < 0 || ConcealedTileArray.Count() <= index)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), string.Format("Argument '{0}'({1}) is out of range.", nameof(index), index));
+            }
+
+            for (int i = index; i < ConcealedTileArray.Count() - 1; i++)
+            {
+                ConcealedTileArray[i] = ConcealedTileArray[i + 1];
+            }
+            ConcealedTileArray[ConcealedTileArray.Count() - 1] = null;
+            this.concealedTileNum--;
         }
     }
 }
