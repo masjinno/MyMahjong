@@ -13,6 +13,19 @@
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
+
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="TileButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
     <Grid Background="Lime" ShowGridLines="True" >
         <Grid.RowDefinitions>
             <RowDefinition Height="420"/>
@@ -229,161 +242,96 @@
                 <!-- 門前手牌 -->
                 <TextBlock Text="門前の手牌" FontSize="16" Margin="0,3,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Horizontal" Height="90">
-                    <Button Command="{Binding Path=DiscardCommand}" CommandParameter="0">
+                    <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Command="{Binding Path=DiscardCommand}" CommandParameter="0">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=DataContext.ConcealedTileArray[ 0].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
                             </DataTemplate>
                         </Button.ContentTemplate>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
-                    <Button Command="{Binding Path=DiscardCommand}" CommandParameter="1">
+                    <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Command="{Binding Path=DiscardCommand}" CommandParameter="1">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=DataContext.ConcealedTileArray[ 1].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
                             </DataTemplate>
                         </Button.ContentTemplate>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
-                    <Button Command="{Binding Path=DiscardCommand}" CommandParameter="2">
+                    <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Command="{Binding Path=DiscardCommand}" CommandParameter="2">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=DataContext.ConcealedTileArray[ 2].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
                             </DataTemplate>
                         </Button.ContentTemplate>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
-                    <Button Command="{Binding Path=DiscardCommand}" CommandParameter="3">
+                    <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Command="{Binding Path=DiscardCommand}" CommandParameter="3">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=DataContext.ConcealedTileArray[ 3].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
                             </DataTemplate>
                         </Button.ContentTemplate>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
-                    <Button Command="{Binding Path=DiscardCommand}" CommandParameter="4">
+                    <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Command="{Binding Path=DiscardCommand}" CommandParameter="4">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=DataContext.ConcealedTileArray[ 4].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
                             </DataTemplate>
                         </Button.ContentTemplate>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
-                    <Button Command="{Binding Path=DiscardCommand}" CommandParameter="5">
+                    <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Command="{Binding Path=DiscardCommand}" CommandParameter="5">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=DataContext.ConcealedTileArray[ 5].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
                             </DataTemplate>
                         </Button.ContentTemplate>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
-                    <Button Command="{Binding Path=DiscardCommand}" CommandParameter="6">
+                    <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Command="{Binding Path=DiscardCommand}" CommandParameter="6">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=DataContext.ConcealedTileArray[ 6].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
                             </DataTemplate>
                         </Button.ContentTemplate>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
-                    <Button Command="{Binding Path=DiscardCommand}" CommandParameter="7">
+                    <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Command="{Binding Path=DiscardCommand}" CommandParameter="7">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=DataContext.ConcealedTileArray[ 7].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
                             </DataTemplate>
                         </Button.ContentTemplate>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
-                    <Button Command="{Binding Path=DiscardCommand}" CommandParameter="8">
+                    <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Command="{Binding Path=DiscardCommand}" CommandParameter="8">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=DataContext.ConcealedTileArray[ 8].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
                             </DataTemplate>
                         </Button.ContentTemplate>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
-                    <Button Command="{Binding Path=DiscardCommand}" CommandParameter="9">
+                    <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Command="{Binding Path=DiscardCommand}" CommandParameter="9">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=DataContext.ConcealedTileArray[ 9].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
                             </DataTemplate>
                         </Button.ContentTemplate>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
-                    <Button Command="{Binding Path=DiscardCommand}" CommandParameter="10">
+                    <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Command="{Binding Path=DiscardCommand}" CommandParameter="10">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=DataContext.ConcealedTileArray[10].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
                             </DataTemplate>
                         </Button.ContentTemplate>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
-                    <Button Command="{Binding Path=DiscardCommand}" CommandParameter="11">
+                    <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Command="{Binding Path=DiscardCommand}" CommandParameter="11">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=DataContext.ConcealedTileArray[11].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
                             </DataTemplate>
                         </Button.ContentTemplate>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
-                    <Button Command="{Binding Path=DiscardCommand}" CommandParameter="12">
+                    <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Command="{Binding Path=DiscardCommand}" CommandParameter="12">
                         <Button.ContentTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Path=DataContext.ConcealedTileArray[12].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
                             </DataTemplate>
                         </Button.ContentTemplate>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
                 </StackPanel>
             </Grid>
