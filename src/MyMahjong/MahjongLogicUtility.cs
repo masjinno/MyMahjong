@@ -55,9 +55,15 @@ namespace MyMahjong
             }
 
             /// 牌数チェック
-            int nTiles = 0;
-            nTiles += concealedTiles.Count() + openedSets.Count() * 3 + 1;
-            if (nTiles != 14) throw new ArgumentException("The number of tiles is invalid.");
+            int numTiles = MahjongLogicUtility.CountEntityElements(concealedTiles) + MahjongLogicUtility.CountEntityElements(openedSets) * 3;
+            if (drawnTile != null)
+            {
+                numTiles++;
+            }
+            if (numTiles != 14)
+            {
+                throw new ArgumentException("The number of tiles is invalid.");
+            }
 
             Tile[] hands = new Tile[concealedTiles.Count() + 1];
             concealedTiles.CopyTo(hands, 0);
@@ -434,6 +440,24 @@ namespace MyMahjong
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// 配列の非nullの要素の個数を数える
+        /// </summary>
+        /// <param name="array">調査対象の配列</param>
+        /// <returns>非nullの要素の個数</returns>
+        private static int CountEntityElements(Array array)
+        {
+            int num = 0;
+            foreach (object o in array)
+            {
+                if (o != null)
+                {
+                    num++;
+                }
+            }
+            return num;
         }
 
         /// <summary>
