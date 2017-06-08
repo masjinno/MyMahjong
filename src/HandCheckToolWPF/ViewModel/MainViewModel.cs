@@ -255,7 +255,7 @@ namespace HandCheckToolWPF.ViewModel
 
                     this.DiscardConcealedTile(index);
 
-                    RaisePropertyChanged(nameof(ConcealedTileArray));
+                    RaisePropertyChanged(nameof(this.ConcealedTileArray));
                 });
             }
         }
