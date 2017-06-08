@@ -389,7 +389,7 @@ namespace HandCheckToolWPF.ViewModel
                 this.ConcealedTileArray[this.concealedTileNum] = addedTile;
                 //System.Collections.IComparer a = new delegate((a, b) => a.Index - b.Index);
                 Array.Sort(ConcealedTileArray, 0, this.concealedTileNum + 1, new Tile.TileIndexCompare());
-                RaisePropertyChanged("ConcealedTileArray");
+                RaisePropertyChanged(nameof(ConcealedTileArray));
                 this.concealedTileNum++;
             }
             else
