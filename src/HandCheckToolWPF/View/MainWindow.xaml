@@ -55,43 +55,268 @@
                     <ColumnDefinition Width="66"/>
                     <ColumnDefinition Width="66"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" Command="{Binding Path=SelectTileCommand}" CommandParameter=" 0"><Image Source="{Binding Path=TileArray[ 0].FrontImage}"/></Button>
-                <Button Grid.Row="0" Grid.Column="1" Command="{Binding Path=SelectTileCommand}" CommandParameter=" 1"><Image Source="{Binding Path=TileArray[ 1].FrontImage}"/></Button>
-                <Button Grid.Row="0" Grid.Column="2" Command="{Binding Path=SelectTileCommand}" CommandParameter=" 2"><Image Source="{Binding Path=TileArray[ 2].FrontImage}"/></Button>
-                <Button Grid.Row="0" Grid.Column="3" Command="{Binding Path=SelectTileCommand}" CommandParameter=" 3"><Image Source="{Binding Path=TileArray[ 3].FrontImage}"/></Button>
-                <Button Grid.Row="0" Grid.Column="4" Command="{Binding Path=SelectTileCommand}" CommandParameter=" 4"><Image Source="{Binding Path=TileArray[ 4].FrontImage}"/></Button>
-                <Button Grid.Row="0" Grid.Column="5" Command="{Binding Path=SelectTileCommand}" CommandParameter=" 5"><Image Source="{Binding Path=TileArray[ 5].FrontImage}"/></Button>
-                <Button Grid.Row="0" Grid.Column="6" Command="{Binding Path=SelectTileCommand}" CommandParameter=" 6"><Image Source="{Binding Path=TileArray[ 6].FrontImage}"/></Button>
-                <Button Grid.Row="0" Grid.Column="7" Command="{Binding Path=SelectTileCommand}" CommandParameter=" 7"><Image Source="{Binding Path=TileArray[ 7].FrontImage}"/></Button>
-                <Button Grid.Row="0" Grid.Column="8" Command="{Binding Path=SelectTileCommand}" CommandParameter=" 8"><Image Source="{Binding Path=TileArray[ 8].FrontImage}"/></Button>
-                <Button Grid.Row="0" Grid.Column="9" Command="{Binding Path=SelectTileCommand}" CommandParameter=" 9"><Image Source="{Binding Path=TileArray[ 9].FrontImage}"/></Button>
-                <Button Grid.Row="1" Grid.Column="0" Command="{Binding Path=SelectTileCommand}" CommandParameter="10"><Image Source="{Binding Path=TileArray[10].FrontImage}"/></Button>
-                <Button Grid.Row="1" Grid.Column="1" Command="{Binding Path=SelectTileCommand}" CommandParameter="11"><Image Source="{Binding Path=TileArray[11].FrontImage}"/></Button>
-                <Button Grid.Row="1" Grid.Column="2" Command="{Binding Path=SelectTileCommand}" CommandParameter="12"><Image Source="{Binding Path=TileArray[12].FrontImage}"/></Button>
-                <Button Grid.Row="1" Grid.Column="3" Command="{Binding Path=SelectTileCommand}" CommandParameter="13"><Image Source="{Binding Path=TileArray[13].FrontImage}"/></Button>
-                <Button Grid.Row="1" Grid.Column="4" Command="{Binding Path=SelectTileCommand}" CommandParameter="14"><Image Source="{Binding Path=TileArray[14].FrontImage}"/></Button>
-                <Button Grid.Row="1" Grid.Column="5" Command="{Binding Path=SelectTileCommand}" CommandParameter="15"><Image Source="{Binding Path=TileArray[15].FrontImage}"/></Button>
-                <Button Grid.Row="1" Grid.Column="6" Command="{Binding Path=SelectTileCommand}" CommandParameter="16"><Image Source="{Binding Path=TileArray[16].FrontImage}"/></Button>
-                <Button Grid.Row="1" Grid.Column="7" Command="{Binding Path=SelectTileCommand}" CommandParameter="17"><Image Source="{Binding Path=TileArray[17].FrontImage}"/></Button>
-                <Button Grid.Row="1" Grid.Column="8" Command="{Binding Path=SelectTileCommand}" CommandParameter="18"><Image Source="{Binding Path=TileArray[18].FrontImage}"/></Button>
-                <Button Grid.Row="1" Grid.Column="9" Command="{Binding Path=SelectTileCommand}" CommandParameter="19"><Image Source="{Binding Path=TileArray[19].FrontImage}"/></Button>
-                <Button Grid.Row="2" Grid.Column="0" Command="{Binding Path=SelectTileCommand}" CommandParameter="20"><Image Source="{Binding Path=TileArray[20].FrontImage}"/></Button>
-                <Button Grid.Row="2" Grid.Column="1" Command="{Binding Path=SelectTileCommand}" CommandParameter="21"><Image Source="{Binding Path=TileArray[21].FrontImage}"/></Button>
-                <Button Grid.Row="2" Grid.Column="2" Command="{Binding Path=SelectTileCommand}" CommandParameter="22"><Image Source="{Binding Path=TileArray[22].FrontImage}"/></Button>
-                <Button Grid.Row="2" Grid.Column="3" Command="{Binding Path=SelectTileCommand}" CommandParameter="23"><Image Source="{Binding Path=TileArray[23].FrontImage}"/></Button>
-                <Button Grid.Row="2" Grid.Column="4" Command="{Binding Path=SelectTileCommand}" CommandParameter="24"><Image Source="{Binding Path=TileArray[24].FrontImage}"/></Button>
-                <Button Grid.Row="2" Grid.Column="5" Command="{Binding Path=SelectTileCommand}" CommandParameter="25"><Image Source="{Binding Path=TileArray[25].FrontImage}"/></Button>
-                <Button Grid.Row="2" Grid.Column="6" Command="{Binding Path=SelectTileCommand}" CommandParameter="26"><Image Source="{Binding Path=TileArray[26].FrontImage}"/></Button>
-                <Button Grid.Row="2" Grid.Column="7" Command="{Binding Path=SelectTileCommand}" CommandParameter="27"><Image Source="{Binding Path=TileArray[27].FrontImage}"/></Button>
-                <Button Grid.Row="2" Grid.Column="8" Command="{Binding Path=SelectTileCommand}" CommandParameter="28"><Image Source="{Binding Path=TileArray[28].FrontImage}"/></Button>
-                <Button Grid.Row="2" Grid.Column="9" Command="{Binding Path=SelectTileCommand}" CommandParameter="29"><Image Source="{Binding Path=TileArray[29].FrontImage}"/></Button>
-                <Button Grid.Row="3" Grid.Column="0" Command="{Binding Path=SelectTileCommand}" CommandParameter="30"><Image Source="{Binding Path=TileArray[30].FrontImage}"/></Button>
-                <Button Grid.Row="3" Grid.Column="1" Command="{Binding Path=SelectTileCommand}" CommandParameter="31"><Image Source="{Binding Path=TileArray[31].FrontImage}"/></Button>
-                <Button Grid.Row="3" Grid.Column="2" Command="{Binding Path=SelectTileCommand}" CommandParameter="32"><Image Source="{Binding Path=TileArray[32].FrontImage}"/></Button>
-                <Button Grid.Row="3" Grid.Column="3" Command="{Binding Path=SelectTileCommand}" CommandParameter="33"><Image Source="{Binding Path=TileArray[33].FrontImage}"/></Button>
-                <Button Grid.Row="3" Grid.Column="4" Command="{Binding Path=SelectTileCommand}" CommandParameter="34"><Image Source="{Binding Path=TileArray[34].FrontImage}"/></Button>
-                <Button Grid.Row="3" Grid.Column="5" Command="{Binding Path=SelectTileCommand}" CommandParameter="35"><Image Source="{Binding Path=TileArray[35].FrontImage}"/></Button>
-                <Button Grid.Row="3" Grid.Column="6" Command="{Binding Path=SelectTileCommand}" CommandParameter="36"><Image Source="{Binding Path=TileArray[36].FrontImage}"/></Button>
+
+                <!-- 牌一覧 -->
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="0" Grid.Column="0" Command="{Binding Path=SelectTileCommand}" CommandParameter="0">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[0].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="0" Grid.Column="1" Command="{Binding Path=SelectTileCommand}" CommandParameter="1">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[1].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="0" Grid.Column="2" Command="{Binding Path=SelectTileCommand}" CommandParameter="2">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[2].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="0" Grid.Column="3" Command="{Binding Path=SelectTileCommand}" CommandParameter="3">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[3].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="0" Grid.Column="4" Command="{Binding Path=SelectTileCommand}" CommandParameter="4">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[4].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="0" Grid.Column="5" Command="{Binding Path=SelectTileCommand}" CommandParameter="5">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[5].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="0" Grid.Column="6" Command="{Binding Path=SelectTileCommand}" CommandParameter="6">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[6].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="0" Grid.Column="7" Command="{Binding Path=SelectTileCommand}" CommandParameter="7">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[7].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="0" Grid.Column="8" Command="{Binding Path=SelectTileCommand}" CommandParameter="8">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[8].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="0" Grid.Column="9" Command="{Binding Path=SelectTileCommand}" CommandParameter="9">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[9].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="1" Grid.Column="0" Command="{Binding Path=SelectTileCommand}" CommandParameter="10">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[10].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="1" Grid.Column="1" Command="{Binding Path=SelectTileCommand}" CommandParameter="11">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[11].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="1" Grid.Column="2" Command="{Binding Path=SelectTileCommand}" CommandParameter="12">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[12].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="1" Grid.Column="3" Command="{Binding Path=SelectTileCommand}" CommandParameter="13">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[13].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="1" Grid.Column="4" Command="{Binding Path=SelectTileCommand}" CommandParameter="14">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[14].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="1" Grid.Column="5" Command="{Binding Path=SelectTileCommand}" CommandParameter="15">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[15].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="1" Grid.Column="6" Command="{Binding Path=SelectTileCommand}" CommandParameter="16">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[16].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="1" Grid.Column="7" Command="{Binding Path=SelectTileCommand}" CommandParameter="17">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[17].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="1" Grid.Column="8" Command="{Binding Path=SelectTileCommand}" CommandParameter="18">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[18].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="1" Grid.Column="9" Command="{Binding Path=SelectTileCommand}" CommandParameter="19">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[19].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="2" Grid.Column="0" Command="{Binding Path=SelectTileCommand}" CommandParameter="20">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[20].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="2" Grid.Column="1" Command="{Binding Path=SelectTileCommand}" CommandParameter="21">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[21].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="2" Grid.Column="2" Command="{Binding Path=SelectTileCommand}" CommandParameter="22">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[22].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="2" Grid.Column="3" Command="{Binding Path=SelectTileCommand}" CommandParameter="23">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[23].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="2" Grid.Column="4" Command="{Binding Path=SelectTileCommand}" CommandParameter="24">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[24].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="2" Grid.Column="5" Command="{Binding Path=SelectTileCommand}" CommandParameter="25">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[25].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="2" Grid.Column="6" Command="{Binding Path=SelectTileCommand}" CommandParameter="26">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[26].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="2" Grid.Column="7" Command="{Binding Path=SelectTileCommand}" CommandParameter="27">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[27].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="2" Grid.Column="8" Command="{Binding Path=SelectTileCommand}" CommandParameter="28">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[28].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="2" Grid.Column="9" Command="{Binding Path=SelectTileCommand}" CommandParameter="29">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[29].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="3" Grid.Column="0" Command="{Binding Path=SelectTileCommand}" CommandParameter="30">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[30].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="3" Grid.Column="1" Command="{Binding Path=SelectTileCommand}" CommandParameter="31">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[31].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="3" Grid.Column="2" Command="{Binding Path=SelectTileCommand}" CommandParameter="32">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[32].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="3" Grid.Column="3" Command="{Binding Path=SelectTileCommand}" CommandParameter="33">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[33].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="3" Grid.Column="4" Command="{Binding Path=SelectTileCommand}" CommandParameter="34">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[34].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="3" Grid.Column="5" Command="{Binding Path=SelectTileCommand}" CommandParameter="35">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[35].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Style="{StaticResource ResourceKey=TileButtonStyle}" Grid.Row="3" Grid.Column="6" Command="{Binding Path=SelectTileCommand}" CommandParameter="36">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=DataContext.TileArray[36].FrontImage, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                
             </Grid>
             <DockPanel Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
                 <GroupBox DockPanel.Dock="Top" Header="設定" IsEnabled="False" FontSize="14" Margin="8,0">
