@@ -259,6 +259,21 @@ namespace HandCheckToolWPF.ViewModel
                 });
             }
         }
+
+        /// <summary>
+        /// 和了牌削除コマンド
+        /// </summary>
+        public ICommand RemoveWinningTileCommand
+        {
+            get
+            {
+                return new DelegateCommand(() =>
+                {
+                    this.WinningTile = null;
+                    RaisePropertyChanged(nameof(this.WinningTile));
+                });
+            }
+        }
         #endregion
 
         /// <summary>
