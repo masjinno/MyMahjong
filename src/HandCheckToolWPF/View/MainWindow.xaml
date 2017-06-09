@@ -436,7 +436,7 @@
                     <Button Content="牌リセット" Width="75" Margin="6" />
                     <Button Content="聴牌判定" Width="75" Margin="6,0,6,6" Command="{Binding Path=CheckWaitingHandCommand}"/>
                     <Button Content="和了宣言" Width="75" Margin="6,0,6,6" Command="{Binding Path=DeclareWinCommand}"/>
-                    <Button Content="ლ(╹◡╹ლ)" IsEnabled="False" Width="75" Margin="8,0,8,8"/>
+                    <ToggleButton Content="ლ(╹◡╹ლ)" IsEnabled="False" Width="75" Margin="8,0,8,8" ToolTip="ランダムツモ"/>
                 </StackPanel>
                 <DockPanel IsEnabled="False" Margin="2,0,0,0">
                     <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="36">
