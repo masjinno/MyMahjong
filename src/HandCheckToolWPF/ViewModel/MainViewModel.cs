@@ -158,6 +158,20 @@ namespace HandCheckToolWPF.ViewModel
 
         #region Bindingコマンド
         /// <summary>
+        /// タイル削除コマンド
+        /// </summary>
+        public ICommand ClearTilesCommand
+        {
+            get
+            {
+                return new DelegateCommand(() =>
+                {
+                    this.ClearTiles();
+                });
+            }
+        }
+
+        /// <summary>
         /// 【Bindingコマンド】
         /// 聴牌判定コマンド
         /// </summary>
@@ -385,6 +399,33 @@ namespace HandCheckToolWPF.ViewModel
                 this.TileArray[i].Kind = TileArrayKindsDictionary[i].kinds;
                 this.TileArray[i].FrontImage = this.GetImageSource(TileArrayKindsDictionary[i].frontImagePath);
             }
+        }
+
+        /// <summary>
+        /// 牌をクリアする。
+        /// 対象は以下の牌
+        /// ・面前手牌
+        /// ・和了牌
+        /// ・鳴いた牌
+        /// ・ドラ表示牌
+        /// </summary>
+        private void ClearTiles()
+        {
+            /// 面前手牌クリア
+            for (int i = 0; i < ConcealedTileArray.Count(); i++)
+            {
+                ConcealedTileArray[i] = null;
+            }
+            RaisePropertyChanged(nameof(this.ConcealedTileArray));
+
+            // 和了牌クリア
+            WinningTile = null;
+            RaisePropertyChanged(nameof(this.WinningTile));
+
+            // TODO: 鳴いた牌クリア処理
+
+            // TODO: ドラ表示牌クリア処理
+
         }
 
         /// <summary>

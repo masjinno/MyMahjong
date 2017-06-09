@@ -433,7 +433,7 @@
                     </StackPanel>
                 </GroupBox>
                 <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
-                    <Button Content="牌リセット" Width="75" Margin="6" />
+                    <Button Content="牌リセット" Width="75" Margin="6" Command="{Binding Path=ClearTilesCommand}"/>
                     <Button Content="聴牌判定" Width="75" Margin="6,0,6,6" Command="{Binding Path=CheckWaitingHandCommand}"/>
                     <Button Content="和了宣言" Width="75" Margin="6,0,6,6" Command="{Binding Path=DeclareWinCommand}"/>
                     <ToggleButton Content="ლ(╹◡╹ლ)" IsEnabled="False" Width="75" Margin="8,0,8,8" ToolTip="ランダムツモ"/>
