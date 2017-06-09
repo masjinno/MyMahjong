@@ -114,7 +114,7 @@ namespace MyMahjong
                 }
 
                 /// 面子判定
-                for (int tileSetCheckIndex = 0; tileSetCheckIndex < hands.Count(); tileSetCheckIndex++)
+                for (int tileSetCheckIndex = 0; tileSetCheckIndex + 2 < hands.Count(); tileSetCheckIndex++)
                 {
                     /// 面子判定済みなら、面子判定から除外
                     if (isUsed[tileSetCheckIndex])
@@ -123,28 +123,25 @@ namespace MyMahjong
                     }
 
                     /// 刻子 & 順子チェック
-                    if (tileSetCheckIndex + 2 < hands.Count())
+                    TileSet.Kinds[] kindsArray = new TileSet.Kinds[2] { TileSet.Kinds.Pung, TileSet.Kinds.Chow };
+                    foreach (TileSet.Kinds k in kindsArray)
                     {
-                        TileSet.Kinds[] kindsArray = new TileSet.Kinds[2] { TileSet.Kinds.Pung, TileSet.Kinds.Chow };
-                        foreach (TileSet.Kinds k in kindsArray)
+                        if (!isUsed[tileSetCheckIndex])
                         {
-                            if (!isUsed[tileSetCheckIndex])
+                            switch (k)
                             {
-                                switch (k)
-                                {
-                                    case TileSet.Kinds.Pung:
-                                        if (!IsPung(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex))
-                                        {
-                                            IsChow(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex);
-                                        }
-                                        break;
-                                    case TileSet.Kinds.Chow:
-                                        if (!IsChow(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex))
-                                        {
-                                            IsPung(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex);
-                                        }
-                                        break;
-                                }
+                                case TileSet.Kinds.Pung:
+                                    if (!IsPung(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex))
+                                    {
+                                        IsChow(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex);
+                                    }
+                                    break;
+                                case TileSet.Kinds.Chow:
+                                    if (!IsChow(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex))
+                                    {
+                                        IsPung(hands, ref isUsed, ref tempTileSets, tileSetCheckIndex);
+                                    }
+                                    break;
                             }
                         }
                     }
