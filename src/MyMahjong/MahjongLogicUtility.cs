@@ -317,6 +317,10 @@ namespace MyMahjong
             {
                 throw new ArgumentOutOfRangeException(string.Format("Argument 'index'{0} is invalid.", index));
             }
+            if (isUsed[index])
+            {
+                return false;
+            }
 
             /// 牌チェック
             int num = 1;
@@ -324,7 +328,7 @@ namespace MyMahjong
             pungIndices[0] = index;
             for (int checkIndex = index+1; checkIndex < hands.Count(); checkIndex++)
             {
-                if (hands[index] == hands[checkIndex])
+                if (hands[index] == hands[checkIndex] && !isUsed[checkIndex])
                 {
                     pungIndices[num] = checkIndex;
                     num++;
@@ -380,6 +384,10 @@ namespace MyMahjong
             {
                 throw new ArgumentOutOfRangeException(string.Format("Argument 'index'{0} is invalid.", index));
             }
+            if (isUsed[index])
+            {
+                return false;
+            }
 
             /// 数牌でなければ即return false
             if (!hands[index].IsSuit)
@@ -401,7 +409,7 @@ namespace MyMahjong
             {
                 if (MahjongLogicUtility.IsSameType(hands[checkIndex], hands[index]) && !isUsed[checkIndex])
                 {
-                    if (hands[checkIndex].Number == hands[index].Number + num)
+                    if (hands[checkIndex].Number == hands[index].Number + num && !isUsed[checkIndex])
                     {
                         chowIndices[num] = checkIndex;
                         num++;
