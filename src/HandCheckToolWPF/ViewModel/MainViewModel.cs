@@ -182,7 +182,14 @@ namespace HandCheckToolWPF.ViewModel
                 return new DelegateCommand(() =>
                 {
                     bool ret = MahjongLogicUtility.IsWaitingHand(ConcealedTileArray, new TileSet[0]);
-                    System.Windows.MessageBox.Show(ret.ToString());
+                    if (ret)
+                    {
+                        System.Windows.MessageBox.Show("聴牌！");
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("不聴...");
+                    }
                 });
             }
         }
@@ -198,7 +205,14 @@ namespace HandCheckToolWPF.ViewModel
                 return new DelegateCommand(() =>
                 {
                     bool ret = MahjongLogicUtility.IsWonHand(ConcealedTileArray, new TileSet[0], WinningTile);
-                    System.Windows.MessageBox.Show(ret.ToString());
+                    if (ret)
+                    {
+                        System.Windows.MessageBox.Show("和了！");
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("錯和...");
+                    }
                 });
             }
         }
