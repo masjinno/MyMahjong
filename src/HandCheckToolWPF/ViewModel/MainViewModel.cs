@@ -416,6 +416,7 @@ namespace HandCheckToolWPF.ViewModel
             {
                 ConcealedTileArray[i] = null;
             }
+            this.concealedTileNum = 0;
             RaisePropertyChanged(nameof(this.ConcealedTileArray));
 
             // 和了牌クリア
