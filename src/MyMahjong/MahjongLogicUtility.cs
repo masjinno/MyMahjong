@@ -328,7 +328,7 @@ namespace MyMahjong
             pungIndices[0] = index;
             for (int checkIndex = index+1; checkIndex < hands.Count(); checkIndex++)
             {
-                if (hands[index] == hands[checkIndex] && !isUsed[checkIndex])
+                if (hands[index].Kind == hands[checkIndex].Kind && !isUsed[checkIndex])
                 {
                     pungIndices[num] = checkIndex;
                     num++;
