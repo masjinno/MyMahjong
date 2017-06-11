@@ -577,7 +577,7 @@
                     </Button.Template>
                 </Button>
             </Grid>
-            <Grid Margin="20,0">
+            <Grid Margin="20,0" Visibility="{Binding Path=MeldedTileSetVisibility}">
                 <!-- 鳴いた牌 -->
                 <TextBlock Text="鳴いた牌" FontSize="16" Margin="0,3,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Horizontal" Height="90">

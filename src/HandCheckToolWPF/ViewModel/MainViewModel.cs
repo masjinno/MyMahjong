@@ -71,6 +71,17 @@ namespace HandCheckToolWPF.ViewModel
 
         /// <summary>
         /// 【Bindingプロパティ】
+        /// 鳴いた牌の面子
+        /// </summary>
+        public TileSet[] MeldedTileSetArray
+        {
+            get { return this._meldedTileSetArray; }
+            set { SetProperty(ref this._meldedTileSetArray, value); }
+        }
+        private TileSet[] _meldedTileSetArray;
+
+        /// <summary>
+        /// 【Bindingプロパティ】
         /// ドラ表示牌
         /// </summary>
         public Tile[,] DoraIndicatorArray
@@ -151,6 +162,26 @@ namespace HandCheckToolWPF.ViewModel
             }
         }
         private bool _isSelectingDoraIndicatorMode;
+
+        /// <summary>
+        /// 【Bindingプロパティ】
+        /// 鳴いた牌を見せるか
+        /// </summary>
+        public System.Windows.Visibility MeldedTileSetVisibility
+        {
+            get
+            {
+                int num = CountEntityElements(this.MeldedTileSetArray);
+                if (num > 0)
+                {
+                    return System.Windows.Visibility.Visible;
+                }
+                else
+                {
+                    return System.Windows.Visibility.Collapsed;
+                }
+            }
+        }
         #endregion
 
         #region Bindingコマンド
@@ -168,12 +199,12 @@ namespace HandCheckToolWPF.ViewModel
 
                     this.ConcealedTileArray = changedValues.Item1;
                     this.WinningTile = changedValues.Item2;
-                    //this. = changedValues.Item3;
+                    this.MeldedTileSetArray = changedValues.Item3;
                     this.DoraIndicatorArray = changedValues.Item4;
 
                     RaisePropertyChanged(nameof(this.ConcealedTileArray));
                     RaisePropertyChanged(nameof(this.WinningTile));
-                    //RaisePropertyChanged(nameof(this.));
+                    RaisePropertyChanged(nameof(this.MeldedTileSetArray));
                     RaisePropertyChanged(nameof(this.DoraIndicatorArray));
                 });
             }
@@ -345,6 +376,12 @@ namespace HandCheckToolWPF.ViewModel
             /// TileArrayメンバ初期化
             this.TileArray = this.mainModel.InitializeTileArray();
 
+            /// ConcealedTileArrayメンバ初期化
+            this.ConcealedTileArray = this.mainModel.ConcealedTileArray;
+
+            /// MeldedTileSetArrayメンバ初期化
+            this.MeldedTileSetArray = this.mainModel.MeldedTileSetArray;
+
             /// ドラ表示牌の初期化
             this.DoraIndicatorArray = this.mainModel.DoraIndicatorArray;
             for (int i = 0; i < this.DoraIndicatorArray.GetLength(0); i++)
@@ -369,6 +406,24 @@ namespace HandCheckToolWPF.ViewModel
             this.IsSelectingWinningTileMode = false;
             this.IsSelectingMeldedTileMode = false;
             this.IsSelectingDoraIndicatorMode = false;
+        }
+
+        /// <summary>
+        /// 配列の非nullの要素の個数を数える
+        /// </summary>
+        /// <param name="array">調査対象の配列</param>
+        /// <returns>非nullの要素の個数</returns>
+        private int CountEntityElements(Array array)
+        {
+            int num = 0;
+            foreach (object o in array)
+            {
+                if (o != null)
+                {
+                    num++;
+                }
+            }
+            return num;
         }
     }
 }
