@@ -18,19 +18,19 @@ namespace HandCheckToolWPF.Model
     public class MainModel
     {
         /// <summary>牌一覧</summary>
-        public Tile[] tileArray { get; private set; }
+        public Tile[] TileArray { get; private set; }
 
         /// <summary>門前牌</summary>
-        public Tile[] concealedTileArray { get; private set; }
+        public Tile[] ConcealedTileArray { get; private set; }
 
         /// <summary>和了牌</summary>
-        public Tile winningTile { get; private set; }
+        public Tile WinningTile { get; private set; }
 
         /// <summary>鳴いた牌</summary>
-        public TileSet[] meldedTileSet { get; private set; }
+        public TileSet[] MeldedTileSetArray { get; private set; }
 
         /// <summary>ドラ表示牌</summary>
-        public Tile[,] doraIndicatorArray { get; private set; }
+        public Tile[,] DoraIndicatorArray { get; private set; }
 
         /// <summary>
         /// 面前手配の枚数の最大値。
@@ -50,10 +50,10 @@ namespace HandCheckToolWPF.Model
         /// </summary>
         public MainModel()
         {
-            this.tileArray = new Tile[37];
-            this.concealedTileArray = new Tile[13];
-            this.meldedTileSet = new TileSet[4];
-            this.doraIndicatorArray = new Tile[2, 5];
+            this.TileArray = new Tile[37];
+            this.ConcealedTileArray = new Tile[13];
+            this.MeldedTileSetArray = new TileSet[4];
+            this.DoraIndicatorArray = new Tile[2, 5];
         }
 
         /// <summary>
@@ -111,16 +111,16 @@ namespace HandCheckToolWPF.Model
             };
 
             /// 選択牌一覧
-            for (int i = 0; i < this.tileArray.Count(); i++)
+            for (int i = 0; i < this.TileArray.Count(); i++)
             {
-                this.tileArray[i] = new Tile();
-                this.tileArray[i].Kind = TileArrayKindsDictionary[i].kinds;
-                this.tileArray[i].FrontImage = this.GetImageSource(TileArrayKindsDictionary[i].frontImagePath);
+                this.TileArray[i] = new Tile();
+                this.TileArray[i].Kind = TileArrayKindsDictionary[i].kinds;
+                this.TileArray[i].FrontImage = this.GetImageSource(TileArrayKindsDictionary[i].frontImagePath);
             }
             this.concealedTileNumMax = 13;
             this.concealedTileNum = 0;
 
-            return this.tileArray;
+            return this.TileArray;
         }
 
         /// <summary>
@@ -140,20 +140,20 @@ namespace HandCheckToolWPF.Model
         public Tuple<Tile[], Tile, TileSet[], Tile[,]> ClearTiles()
         {
             /// 面前手牌クリア
-            for (int i = 0; i < concealedTileArray.Count(); i++)
+            for (int i = 0; i < ConcealedTileArray.Count(); i++)
             {
-                concealedTileArray[i] = null;
+                ConcealedTileArray[i] = null;
             }
             concealedTileNum = 0;
 
             // 和了牌クリア
-            winningTile = null;
+            WinningTile = null;
 
             // TODO: 鳴いた牌クリア処理
 
             // TODO: ドラ表示牌クリア処理
 
-            return new Tuple<Tile[], Tile, TileSet[], Tile[,]>(this.concealedTileArray, this.winningTile, this.meldedTileSet, this.doraIndicatorArray);
+            return new Tuple<Tile[], Tile, TileSet[], Tile[,]>(this.ConcealedTileArray, this.WinningTile, this.MeldedTileSetArray, this.DoraIndicatorArray);
         }
 
         /// <summary>
@@ -162,8 +162,8 @@ namespace HandCheckToolWPF.Model
         /// <returns>クリア後の和了牌(=null)</returns>
         public Tile ClearWinningTile()
         {
-            this.winningTile = null;
-            return this.winningTile;
+            this.WinningTile = null;
+            return this.WinningTile;
         }
 
         /// <summary>
@@ -180,8 +180,8 @@ namespace HandCheckToolWPF.Model
             if (this.concealedTileNum < this.concealedTileNumMax)
             {
                 /// 手配に追加
-                this.concealedTileArray[this.concealedTileNum] = addedTile;
-                Array.Sort(concealedTileArray, 0, this.concealedTileNum + 1, new Tile.TileIndexCompare());
+                this.ConcealedTileArray[this.concealedTileNum] = addedTile;
+                Array.Sort(ConcealedTileArray, 0, this.concealedTileNum + 1, new Tile.TileIndexCompare());
                 this.concealedTileNum++;
 
                 isSucceeded = true;
@@ -191,7 +191,7 @@ namespace HandCheckToolWPF.Model
                 isSucceeded = false;
             }
 
-            return new Tuple<bool, Tile[]>(isSucceeded, this.concealedTileArray);
+            return new Tuple<bool, Tile[]>(isSucceeded, this.ConcealedTileArray);
         }
 
         /// <summary>
@@ -200,8 +200,8 @@ namespace HandCheckToolWPF.Model
         /// <param name="drawnTile">新たな和了牌</param>
         public Tile DrawWinningTile(Tile drawnTile)
         {
-            this.winningTile = drawnTile;
-            return this.winningTile;
+            this.WinningTile = drawnTile;
+            return this.WinningTile;
         }
 
         /// <summary>
@@ -213,8 +213,8 @@ namespace HandCheckToolWPF.Model
         /// <returns>新しいドラ表示牌</returns>
         public Tile[,] SetDoraIndicator(int row, int column, Tile newTile)
         {
-            this.doraIndicatorArray[row, column] = newTile;
-            return this.doraIndicatorArray;
+            this.DoraIndicatorArray[row, column] = newTile;
+            return this.DoraIndicatorArray;
         }
 
         /// <summary>
@@ -223,19 +223,19 @@ namespace HandCheckToolWPF.Model
         /// <param name="index">捨て牌の手牌インデックス</param>
         public Tile[] DiscardConcealedTile(int index)
         {
-            if (index < 0 || concealedTileArray.Count() <= index)
+            if (index < 0 || ConcealedTileArray.Count() <= index)
             {
                 throw new ArgumentOutOfRangeException(nameof(index), string.Format("Argument '{0}'({1}) is out of range.", nameof(index), index));
             }
 
-            for (int i = index; i < concealedTileArray.Count() - 1; i++)
+            for (int i = index; i < ConcealedTileArray.Count() - 1; i++)
             {
-                concealedTileArray[i] = concealedTileArray[i + 1];
+                ConcealedTileArray[i] = ConcealedTileArray[i + 1];
             }
-            concealedTileArray[concealedTileArray.Count() - 1] = null;
+            ConcealedTileArray[ConcealedTileArray.Count() - 1] = null;
             this.concealedTileNum--;
 
-            return this.concealedTileArray;
+            return this.ConcealedTileArray;
         }
         
         /// <summary>

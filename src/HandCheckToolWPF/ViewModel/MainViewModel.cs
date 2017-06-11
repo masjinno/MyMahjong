@@ -346,7 +346,7 @@ namespace HandCheckToolWPF.ViewModel
             this.TileArray = this.mainModel.InitializeTileArray();
 
             /// ドラ表示牌の初期化
-            this.DoraIndicatorArray = this.mainModel.doraIndicatorArray;
+            this.DoraIndicatorArray = this.mainModel.DoraIndicatorArray;
             for (int i = 0; i < this.DoraIndicatorArray.GetLength(0); i++)
             {
                 for (int j = 0; j < this.DoraIndicatorArray.GetLength(1); j++)
@@ -354,7 +354,7 @@ namespace HandCheckToolWPF.ViewModel
                     this.mainModel.SetDoraIndicator(i, j, null);
                 }
             }
-            this.DoraIndicatorArray = this.mainModel.doraIndicatorArray;
+            this.DoraIndicatorArray = this.mainModel.DoraIndicatorArray;
 
             /// 牌選択モードの初期化
             this.InitializeSelectingTileMode();
