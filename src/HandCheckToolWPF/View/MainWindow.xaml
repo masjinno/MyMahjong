@@ -412,7 +412,7 @@
                         </Grid>
                         <GroupBox Grid.Column="1" IsEnabled="False" Margin="0,0,8,0">
                             <GroupBox.Header>
-                                <RadioButton Content="晒す牌" GroupName="TileSelectionMode" IsChecked="{Binding Path=IsSelectingOpenedTileMode}"/>
+                                <RadioButton Content="晒す牌" GroupName="TileSelectionMode" IsChecked="{Binding Path=IsSelectingMeldedTileMode}"/>
                             </GroupBox.Header>
                             <StackPanel Orientation="Horizontal">
                                 <RadioButton Content="ポン" IsChecked="False" Margin="0,0,8,0"/>

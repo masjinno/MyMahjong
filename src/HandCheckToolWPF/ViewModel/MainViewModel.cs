@@ -21,7 +21,7 @@ namespace HandCheckToolWPF.ViewModel
         {
             ConcealedTile,  // 手牌選択
             WinningTile,    // 和了牌選択
-            OpenedTile,     // 鳴き牌選択
+            MeldedTileSet,  // 鳴き牌選択
             DoraIndicator   // ドラ表示牌選択
         }
 
@@ -120,19 +120,19 @@ namespace HandCheckToolWPF.ViewModel
         /// 【Bindingプロパティ】
         /// 鳴き牌選択モードか
         /// </summary>
-        public bool IsSelectingOpenedTileMode
+        public bool IsSelectingMeldedTileMode
         {
-            get { return this._isSelectingOpenedTileMode; }
+            get { return this._isSelectingMeldedTileMode; }
             set
             {
                 if (value)
                 {
-                    tileSelectionMode = TileSelectionMode.OpenedTile;
+                    tileSelectionMode = TileSelectionMode.MeldedTileSet;
                 }
-                SetProperty(ref this._isSelectingOpenedTileMode, value);
+                SetProperty(ref this._isSelectingMeldedTileMode, value);
             }
         }
-        private bool _isSelectingOpenedTileMode;
+        private bool _isSelectingMeldedTileMode;
 
         /// <summary>
         /// 【Bindingプロパティ】
@@ -270,7 +270,7 @@ namespace HandCheckToolWPF.ViewModel
                             this.WinningTile = this.mainModel.DrawWinningTile(TileArray[index]);
                             RaisePropertyChanged(nameof(this.WinningTile));
                             break;
-                        case TileSelectionMode.OpenedTile:
+                        case TileSelectionMode.MeldedTileSet:
                             // TODO: 鳴き牌選択処理実装
                             break;
                         case TileSelectionMode.DoraIndicator:
@@ -367,7 +367,7 @@ namespace HandCheckToolWPF.ViewModel
         {
             this.IsSelectingConcealedTileMode = true;
             this.IsSelectingWinningTileMode = false;
-            this.IsSelectingOpenedTileMode = false;
+            this.IsSelectingMeldedTileMode = false;
             this.IsSelectingDoraIndicatorMode = false;
         }
     }

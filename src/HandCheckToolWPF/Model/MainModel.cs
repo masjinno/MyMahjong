@@ -27,7 +27,7 @@ namespace HandCheckToolWPF.Model
         public Tile winningTile { get; private set; }
 
         /// <summary>鳴いた牌</summary>
-        public TileSet[] openedTileSet { get; private set; }
+        public TileSet[] meldedTileSet { get; private set; }
 
         /// <summary>ドラ表示牌</summary>
         public Tile[,] doraIndicatorArray { get; private set; }
@@ -52,7 +52,7 @@ namespace HandCheckToolWPF.Model
         {
             this.tileArray = new Tile[37];
             this.concealedTileArray = new Tile[13];
-            this.openedTileSet = new TileSet[4];
+            this.meldedTileSet = new TileSet[4];
             this.doraIndicatorArray = new Tile[2, 5];
         }
 
@@ -153,7 +153,7 @@ namespace HandCheckToolWPF.Model
 
             // TODO: ドラ表示牌クリア処理
 
-            return new Tuple<Tile[], Tile, TileSet[], Tile[,]>(this.concealedTileArray, this.winningTile, this.openedTileSet, this.doraIndicatorArray);
+            return new Tuple<Tile[], Tile, TileSet[], Tile[,]>(this.concealedTileArray, this.winningTile, this.meldedTileSet, this.doraIndicatorArray);
         }
 
         /// <summary>

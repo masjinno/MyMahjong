@@ -22,8 +22,8 @@ namespace MyMahjong
             Chow,                   // 順子
             Pung,                   // 刻子
             ConcealedKong,          // 暗槓
-            OpenedKongFromHand,     // 加槓
-            OpenedKongFromDiscard   // 大明槓
+            MeldedKongFromHand,     // 加槓
+            MeldedKongFromDiscard   // 大明槓
         }
 
         #endregion
@@ -66,8 +66,8 @@ namespace MyMahjong
                     case Kinds.Pung:
                         return 3;
                     case Kinds.ConcealedKong:
-                    case Kinds.OpenedKongFromHand:
-                    case Kinds.OpenedKongFromDiscard:
+                    case Kinds.MeldedKongFromHand:
+                    case Kinds.MeldedKongFromDiscard:
                         return 4;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(Kind), string.Format("Parameter '{0}'({1}) is out of range.", nameof(Kind), Kind));
@@ -118,8 +118,8 @@ namespace MyMahjong
                         ret = (this.Tiles[0].Kind == this.Tiles[1].Kind) && (this.Tiles[0].Kind == this.Tiles[2].Kind);
                         break;
                     case Kinds.ConcealedKong:
-                    case Kinds.OpenedKongFromHand:
-                    case Kinds.OpenedKongFromDiscard:
+                    case Kinds.MeldedKongFromHand:
+                    case Kinds.MeldedKongFromDiscard:
                         ret = (this.Tiles[0].Kind == this.Tiles[1].Kind) && (this.Tiles[0].Kind == this.Tiles[2].Kind) && (this.Tiles[0].Kind == this.Tiles[3].Kind);
                         break;
                     default:
