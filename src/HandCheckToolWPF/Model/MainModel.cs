@@ -170,6 +170,10 @@ namespace HandCheckToolWPF.Model
         /// 面前手牌に牌を追加する
         /// </summary>
         /// <param name="addedTile">追加される牌</param>
+        /// <returns>
+        /// Tuple.item1: 牌追加が成功したか  true:成功  false:失敗
+        /// Tuple.item2: 追加後の門前手牌
+        /// </returns>
         public Tuple<bool, Tile[]> AddConcealedTile(Tile addedTile)
         {
             bool isSucceeded;
