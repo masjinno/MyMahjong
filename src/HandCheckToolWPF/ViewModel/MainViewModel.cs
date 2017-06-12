@@ -49,17 +49,6 @@ namespace HandCheckToolWPF.ViewModel
 
         /// <summary>
         /// 【Bindingプロパティ】
-        /// 和了牌
-        /// </summary>
-        public Tile WinningTile
-        {
-            get { return this._winningTile; }
-            set { SetProperty(ref this._winningTile, value); }
-        }
-        private Tile _winningTile;
-
-        /// <summary>
-        /// 【Bindingプロパティ】
         /// 門前手牌
         /// </summary>
         public Tile[] ConcealedTileArray
@@ -68,6 +57,17 @@ namespace HandCheckToolWPF.ViewModel
             set { SetProperty(ref this._concealedTileArray, value); }
         }
         private Tile[] _concealedTileArray;
+
+        /// <summary>
+        /// 【Bindingプロパティ】
+        /// 和了牌
+        /// </summary>
+        public Tile WinningTile
+        {
+            get { return this._winningTile; }
+            set { SetProperty(ref this._winningTile, value); }
+        }
+        private Tile _winningTile;
 
         /// <summary>
         /// 【Bindingプロパティ】
