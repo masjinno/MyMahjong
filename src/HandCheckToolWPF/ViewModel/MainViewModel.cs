@@ -451,7 +451,7 @@ namespace HandCheckToolWPF.ViewModel
                 {
                     /// 大明槓はないものとする ⇔ 明槓は全て加槓として表示する
                     /// 理由は、加槓の方が横幅が狭いため。
-                    /// ※槍槓チェック時でも加槓表示となってしまうが、ひとまず良しとする。
+                    /// ※槍槓チェック時でも加槓表示
                     tmp = TileSet.Kinds.MeldedKongFromHand;
                 }
                 this._meldedTileSelectionMode = tmp;
