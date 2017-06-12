@@ -205,6 +205,23 @@ namespace HandCheckToolWPF.Model
         }
 
         /// <summary>
+        /// 鳴いた面子を追加する
+        /// </summary>
+        /// <param name="addedTileSet">追加される面子</param>
+        /// <returns>
+        /// Tuple.item1: 面子追加が成功したか
+        /// Tuple.item2: 追加後の面子
+        /// </returns>
+        public Tuple<bool, TileSet[]> AddMeldedTileSet(Tile TopTile, TileSet.Kinds tileSetKind)
+        {
+            bool isSucceeded = false;
+
+
+
+            return new Tuple<bool, TileSet[]>(isSucceeded, this.MeldedTileSetArray);
+        }
+
+        /// <summary>
         /// ドラ表示牌セット
         /// </summary>
         /// <param name="row">セットするドラ表示牌が表か裏か  0:表  1:裏</param>

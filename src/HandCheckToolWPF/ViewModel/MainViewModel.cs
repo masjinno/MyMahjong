@@ -348,7 +348,7 @@ namespace HandCheckToolWPF.ViewModel
                     }
 
                     /// インデックスのバリデーション
-                    if (index < 0 || TileArray.Count() <= index)
+                    if (index < 0 || this.TileArray.Count() <= index)
                     {
                         throw new ArgumentOutOfRangeException(string.Format("Argument'{0}'({1}) is out of range.\r\nRange is [{2},{3}).", nameof(index), index, 0, TileArray.Count()));
                     }
@@ -358,7 +358,7 @@ namespace HandCheckToolWPF.ViewModel
                     {
                         case TileSelectionMode.ConcealedTile:
                             {
-                                var ret = this.mainModel.AddConcealedTile(TileArray[index]);
+                                var ret = this.mainModel.AddConcealedTile(this.TileArray[index]);
                                 if (ret.Item1)
                                 {
                                     this.ConcealedTileArray = ret.Item2;
@@ -371,11 +371,13 @@ namespace HandCheckToolWPF.ViewModel
                             }
                             break;
                         case TileSelectionMode.WinningTile:
-                            this.WinningTile = this.mainModel.DrawWinningTile(TileArray[index]);
+                            this.WinningTile = this.mainModel.DrawWinningTile(this.TileArray[index]);
                             RaisePropertyChanged(nameof(this.WinningTile));
                             break;
                         case TileSelectionMode.MeldedTileSet:
-                            // TODO: 鳴き牌選択処理実装
+                            {
+                                // TODO: 鳴き牌選択処理実装
+                            }
                             break;
                         case TileSelectionMode.DoraIndicator:
                             // TODO: ドラ表示牌選択処理実装
