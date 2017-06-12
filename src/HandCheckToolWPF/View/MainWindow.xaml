@@ -410,15 +410,15 @@
                             <RadioButton Grid.Row="0" Content="門前牌" GroupName="TileSelectionMode" IsChecked="{Binding Path=IsSelectingConcealedTileMode}" VerticalAlignment="Center"/>
                             <RadioButton Grid.Row="1" Content="和了牌" GroupName="TileSelectionMode" IsChecked="{Binding Path=IsSelectingWinningTileMode}" VerticalAlignment="Center"/>
                         </Grid>
-                        <GroupBox Grid.Column="1" IsEnabled="False" Margin="0,0,8,0">
+                        <GroupBox Grid.Column="1" Margin="0,0,8,0">
                             <GroupBox.Header>
                                 <RadioButton Content="晒す牌" GroupName="TileSelectionMode" IsChecked="{Binding Path=IsSelectingMeldedTileMode}"/>
                             </GroupBox.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <RadioButton Content="ポン" IsChecked="False" Margin="0,0,8,0"/>
-                                <RadioButton Content="チー" IsChecked="False" Margin="0,0,8,0"/>
-                                <RadioButton Content="暗槓" IsChecked="False" Margin="0,0,8,0"/>
-                                <RadioButton Content="明槓" IsChecked="False" Margin="0,0,8,0"/>
+                            <StackPanel Orientation="Horizontal" IsEnabled="{Binding Path=IsSelectingMeldedTileMode}">
+                                <RadioButton Content="ポン" IsChecked="{Binding Path=IsSelectingPungMode}" Margin="0,0,8,0"/>
+                                <RadioButton Content="チー" IsChecked="{Binding Path=IsSelectingChowMode}" Margin="0,0,8,0"/>
+                                <RadioButton Content="暗槓" IsChecked="{Binding Path=IsSelectingConcealedKongMode}" Margin="0,0,8,0"/>
+                                <RadioButton Content="明槓" IsChecked="{Binding Path=IsSelectingMeldedKongMode}" Margin="0,0,8,0"/>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Grid.Column="2" IsEnabled="False" Margin="0,0,8,0">
