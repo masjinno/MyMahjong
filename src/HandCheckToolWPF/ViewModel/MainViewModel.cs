@@ -102,7 +102,7 @@ namespace HandCheckToolWPF.ViewModel
             {
                 if (value)
                 {
-                    tileSelectionMode = TileSelectionMode.ConcealedTile;
+                    this.tileSelectionMode = TileSelectionMode.ConcealedTile;
                 }
                 SetProperty(ref this._isSelectingConcealedTileMode, value);
             }
@@ -120,7 +120,7 @@ namespace HandCheckToolWPF.ViewModel
             {
                 if (value)
                 {
-                    tileSelectionMode = TileSelectionMode.WinningTile;
+                    this.tileSelectionMode = TileSelectionMode.WinningTile;
                 }
                 SetProperty(ref this._isSelectingWinningTileMode, value);
             }
@@ -138,7 +138,7 @@ namespace HandCheckToolWPF.ViewModel
             {
                 if (value)
                 {
-                    tileSelectionMode = TileSelectionMode.MeldedTileSet;
+                    this.tileSelectionMode = TileSelectionMode.MeldedTileSet;
                 }
                 SetProperty(ref this._isSelectingMeldedTileMode, value);
             }
@@ -156,12 +156,85 @@ namespace HandCheckToolWPF.ViewModel
             {
                 if (value)
                 {
-                    tileSelectionMode = TileSelectionMode.DoraIndicator;
+                    this.tileSelectionMode = TileSelectionMode.DoraIndicator;
                 }
                 SetProperty(ref this._isSelectingDoraIndicatorMode, value);
             }
         }
         private bool _isSelectingDoraIndicatorMode;
+
+        /// <summary>
+        /// 【Bindingプロパティ】
+        /// 晒す牌選択ポンモードか
+        /// </summary>
+        public bool IsSelectingPungMode
+        {
+            get { return this._isSelectingPubgMode; }
+            set
+            {
+                if (value)
+                {
+                    this.meldedTileSelectionMode = TileSet.Kinds.Pung;
+                }
+                SetProperty(ref this._isSelectingPubgMode, value);
+            }
+        }
+        private bool _isSelectingPubgMode;
+
+        /// <summary>
+        /// 【Bindingプロパティ】
+        /// 晒す牌選択チーモードか
+        /// </summary>
+        public bool IsSelectingChowMode
+        {
+            get { return this._isSelectingChowMode; }
+            set
+            {
+                if (value)
+                {
+                    this.meldedTileSelectionMode = TileSet.Kinds.Chow;
+                }
+                SetProperty(ref this._isSelectingChowMode, value);
+            }
+        }
+        private bool _isSelectingChowMode;
+
+        /// <summary>
+        /// 【Bindingプロパティ】
+        /// 晒す牌選択暗槓モードか
+        /// </summary>
+        public bool IsSelectingConcealedKongMode
+        {
+            get { return this._isSelectingConcealedKongMode; }
+            set
+            {
+                if (value)
+                {
+                    this.meldedTileSelectionMode = TileSet.Kinds.ConcealedKong;
+                }
+                SetProperty(ref this._isSelectingConcealedKongMode, value);
+            }
+        }
+        private bool _isSelectingConcealedKongMode;
+
+        /// <summary>
+        /// 【Bindingプロパティ】
+        /// 晒す牌選択明槓モードか
+        /// </summary>
+        public bool IsSelectingMeldedKongMode
+        {
+            get { return this._isSelectingMeldedKongMode; }
+            set
+            {
+                if (value)
+                {
+                    this.meldedTileSelectionMode = TileSet.Kinds.MeldedKongFromHand;
+                }
+                SetProperty(ref this._isSelectingMeldedKongMode, value);
+            }
+        }
+        private bool _isSelectingMeldedKongMode;
+
 
         /// <summary>
         /// 【Bindingプロパティ】
@@ -366,6 +439,27 @@ namespace HandCheckToolWPF.ViewModel
         private TileSelectionMode tileSelectionMode;
 
         /// <summary>
+        /// 晒す牌選択モード
+        /// </summary>
+        private TileSet.Kinds meldedTileSelectionMode
+        {
+            get { return this._meldedTileSelectionMode; }
+            set
+            {
+                TileSet.Kinds tmp = value;
+                if (tmp == TileSet.Kinds.MeldedKongFromDiscard)
+                {
+                    /// 大明槓はないものとする ⇔ 明槓は全て加槓として表示する
+                    /// 理由は、加槓の方が横幅が狭いため。
+                    /// ※槍槓チェック時でも加槓表示となってしまうが、ひとまず良しとする。
+                    tmp = TileSet.Kinds.MeldedKongFromHand;
+                }
+                this._meldedTileSelectionMode = tmp;
+            }
+        }
+        private TileSet.Kinds _meldedTileSelectionMode;
+
+        /// <summary>
         /// コンストラクタ
         /// ・変数の初期化
         /// </summary>
@@ -406,6 +500,11 @@ namespace HandCheckToolWPF.ViewModel
             this.IsSelectingWinningTileMode = false;
             this.IsSelectingMeldedTileMode = false;
             this.IsSelectingDoraIndicatorMode = false;
+
+            this.IsSelectingPungMode = true;
+            this.IsSelectingChowMode = false;
+            this.IsSelectingConcealedKongMode = false;
+            this.IsSelectingMeldedKongMode = false;
         }
 
         /// <summary>
