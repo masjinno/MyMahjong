@@ -415,6 +415,7 @@ namespace HandCheckToolWPF.ViewModel
         }
 
         /// <summary>
+        /// 【Bindingコマンド】
         /// 和了牌削除コマンド
         /// </summary>
         public ICommand RemoveWinningTileCommand
