@@ -231,6 +231,10 @@ namespace HandCheckToolWPF.Model
                     {
                         // TODO: 枚数上限チェック
 
+                        TileSet ts = new TileSet();
+                        Tile[] t = new Tile[] { TopTile, TopTile, TopTile};
+                        ts.Kind = tileSetKind;
+                        ts.Tiles = t;
                     }
                     break;
                 case TileSet.Kinds.Chow:
