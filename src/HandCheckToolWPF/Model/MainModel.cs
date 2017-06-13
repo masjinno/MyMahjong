@@ -132,10 +132,10 @@ namespace HandCheckToolWPF.Model
         /// ・ドラ表示牌
         /// </summary>
         /// <returns>
-        /// Tuple.item1: 門前手牌
-        /// Tuple.item2: 和了牌
-        /// Tuple.item3: 鳴いた牌
-        /// Tuple.item4: ドラ表示牌
+        /// Tuple.Item1: 門前手牌
+        /// Tuple.Item2: 和了牌
+        /// Tuple.Item3: 鳴いた牌
+        /// Tuple.Item4: ドラ表示牌
         /// </returns>
         public Tuple<Tile[], Tile, TileSet[], Tile[,]> ClearTiles()
         {
@@ -171,14 +171,16 @@ namespace HandCheckToolWPF.Model
         /// </summary>
         /// <param name="addedTile">追加される牌</param>
         /// <returns>
-        /// Tuple.item1: 牌追加が成功したか  true:成功  false:失敗
-        /// Tuple.item2: 追加後の門前手牌
+        /// Tuple.Item1: 牌追加が成功したか  true:成功  false:失敗
+        /// Tuple.Item2: 追加後の門前手牌
         /// </returns>
         public Tuple<bool, Tile[]> AddConcealedTile(Tile addedTile)
         {
             bool isSucceeded;
             if (this.concealedTileNum < this.concealedTileNumMax)
             {
+                // TODO: 枚数上限チェック
+
                 /// 手配に追加
                 this.ConcealedTileArray[this.concealedTileNum] = addedTile;
                 Array.Sort(ConcealedTileArray, 0, this.concealedTileNum + 1, new Tile.TileIndexCompare());
@@ -200,6 +202,8 @@ namespace HandCheckToolWPF.Model
         /// <param name="drawnTile">新たな和了牌</param>
         public Tile DrawWinningTile(Tile drawnTile)
         {
+            // TODO: 枚数上限チェック
+
             this.WinningTile = drawnTile;
             return this.WinningTile;
         }
@@ -209,8 +213,8 @@ namespace HandCheckToolWPF.Model
         /// </summary>
         /// <param name="addedTileSet">追加される面子</param>
         /// <returns>
-        /// Tuple.item1: 面子追加が成功したか
-        /// Tuple.item2: 追加後の面子
+        /// Tuple.Item1: 面子追加が成功したか
+        /// Tuple.Item2: 追加後の面子
         /// </returns>
         public Tuple<bool, TileSet[]> AddMeldedTileSet(Tile TopTile, TileSet.Kinds tileSetKind)
         {
