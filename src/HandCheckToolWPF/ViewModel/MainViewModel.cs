@@ -376,7 +376,16 @@ namespace HandCheckToolWPF.ViewModel
                             break;
                         case TileSelectionMode.MeldedTileSet:
                             {
-                                // TODO: 鳴き牌選択処理実装
+                                var ret = this.mainModel.AddMeldedTileSet(this.TileArray[index], this.meldedTileSelectionMode);
+                                if (ret.Item1)
+                                {
+                                    this.MeldedTileSetArray = ret.Item2;
+                                    RaisePropertyChanged(nameof(this.MeldedTileSetArray));
+                                }
+                                else
+                                {
+                                    System.Windows.MessageBox.Show("指定された形式の面子を追加できません。", "操作NG", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                                }
                             }
                             break;
                         case TileSelectionMode.DoraIndicator:
