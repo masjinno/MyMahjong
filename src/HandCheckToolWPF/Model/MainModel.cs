@@ -218,9 +218,57 @@ namespace HandCheckToolWPF.Model
         /// </returns>
         public Tuple<bool, TileSet[]> AddMeldedTileSet(Tile TopTile, TileSet.Kinds tileSetKind)
         {
+            if (TopTile == null)
+            {
+                throw new ArgumentNullException(nameof(TopTile), string.Format("Argument '{0}' is null.", nameof(TopTile)));
+            }
+
             bool isSucceeded = false;
 
+            switch (tileSetKind)
+            {
+                case TileSet.Kinds.Pung:
+                    {
+                        // TODO: 枚数上限チェック
 
+                    }
+                    break;
+                case TileSet.Kinds.Chow:
+                    if (TopTile.IsSuit)
+                    {
+                        // TODO: 枚数上限チェック
+
+                    }
+                    else
+                    {
+                        throw new ArgumentException(
+                            string.Format(
+                                "Argument '{0}' must be suit tile if argument '{1}' is {2}.",
+                                nameof(TopTile), nameof(tileSetKind), tileSetKind));
+                    }
+                    break;
+                case TileSet.Kinds.ConcealedKong:
+                    {
+                        // TODO: 枚数上限チェック
+
+                    }
+                    break;
+                case TileSet.Kinds.MeldedKongFromDiscard:
+                case TileSet.Kinds.MeldedKongFromHand:
+                    {
+                        // TODO: 枚数上限チェック
+
+                    }
+                    break;
+                case TileSet.Kinds.Pair:
+                default:
+                    throw new ArgumentOutOfRangeException(
+                        nameof(tileSetKind),
+                        string.Format(
+                            "Argument '{0}' must be {1}, {2}, {3}, {4} or {5}.",
+                            nameof(tileSetKind), TileSet.Kinds.Pung, TileSet.Kinds.Chow, TileSet.Kinds.ConcealedKong,
+                            TileSet.Kinds.MeldedKongFromDiscard, TileSet.Kinds.MeldedKongFromHand));
+            }
 
             return new Tuple<bool, TileSet[]>(isSucceeded, this.MeldedTileSetArray);
         }
