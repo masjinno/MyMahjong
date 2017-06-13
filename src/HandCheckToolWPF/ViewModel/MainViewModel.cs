@@ -366,7 +366,7 @@ namespace HandCheckToolWPF.ViewModel
                                 }
                                 else
                                 {
-                                    System.Windows.MessageBox.Show("手配枚数が上限に達しています。", "操作NG", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                                    System.Windows.MessageBox.Show("手配枚数が上限に達しています。", "操作NG", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
                                 }
                             }
                             break;
