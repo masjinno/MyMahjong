@@ -235,6 +235,7 @@ namespace HandCheckToolWPF.Model
                         Tile[] t = new Tile[] { TopTile, TopTile, TopTile};
                         ts.Kind = tileSetKind;
                         ts.Tiles = t;
+                        isSucceeded = true;
                     }
                     break;
                 case TileSet.Kinds.Chow:
@@ -242,6 +243,7 @@ namespace HandCheckToolWPF.Model
                     {
                         // TODO: 枚数上限チェック
 
+                        isSucceeded = true;
                     }
                     else
                     {
@@ -252,16 +254,16 @@ namespace HandCheckToolWPF.Model
                     }
                     break;
                 case TileSet.Kinds.ConcealedKong:
-                    {
-                        // TODO: 枚数上限チェック
-
-                    }
-                    break;
                 case TileSet.Kinds.MeldedKongFromDiscard:
                 case TileSet.Kinds.MeldedKongFromHand:
                     {
                         // TODO: 枚数上限チェック
 
+                        TileSet ts = new TileSet();
+                        Tile[] t = new Tile[] { TopTile, TopTile, TopTile, TopTile };
+                        ts.Kind = tileSetKind;
+                        ts.Tiles = t;
+                        isSucceeded = true;
                     }
                     break;
                 case TileSet.Kinds.Pair:
