@@ -106,6 +106,9 @@ namespace MyMahjong
         /// <summary>三元牌か</summary>
         public bool IsDragon { get { return (kind2IndexMap[Kinds.WhiteDragon] <= this.Index && this.Index <= kind2IndexMap[Kinds.RedDragon]); } }
 
+        /// <summary>赤牌か</summary>
+        public bool IsRed { get; set; }
+
         /// <summary>
         /// 数牌の値を取得する
         /// </summary>
