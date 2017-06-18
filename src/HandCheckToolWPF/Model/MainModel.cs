@@ -215,11 +215,11 @@ namespace HandCheckToolWPF.Model
         /// Tuple.Item1: 面子追加が成功したか
         /// Tuple.Item2: 追加後の面子
         /// </returns>
-        public Tuple<bool, TileSet[]> AddMeldedTileSet(Tile TopTile, TileSet.Kinds tileSetKind)
+        public Tuple<bool, TileSet[]> AddMeldedTileSet(int topTileArrayIndex, TileSet.Kinds tileSetKind)
         {
-            if (TopTile == null)
+            if (topTileArrayIndex < 0 || this.TileArray.Count() <= topTileArrayIndex )
             {
-                throw new ArgumentNullException(nameof(TopTile), string.Format("Argument '{0}' is null.", nameof(TopTile)));
+                throw new ArgumentOutOfRangeException(nameof(topTileArrayIndex), string.Format("Argument '{0}' is null.", nameof(topTileArrayIndex)));
             }
 
             bool isSucceeded = false;
@@ -231,14 +231,14 @@ namespace HandCheckToolWPF.Model
                         // TODO: 枚数上限チェック
 
                         TileSet ts = new TileSet();
-                        Tile[] t = new Tile[] { TopTile, TopTile, TopTile};
+                        Tile[] t = new Tile[] { this.TileArray[topTileArrayIndex], this.TileArray[topTileArrayIndex], this.TileArray[topTileArrayIndex] };
                         ts.Kind = tileSetKind;
                         ts.Tiles = t;
                         isSucceeded = true;
                     }
                     break;
                 case TileSet.Kinds.Chow:
-                    if (TopTile.IsSuit)
+                    if (this.TileArray[topTileArrayIndex].IsSuit)
                     {
                         // TODO: 枚数上限チェック
 
@@ -249,7 +249,7 @@ namespace HandCheckToolWPF.Model
                         throw new ArgumentException(
                             string.Format(
                                 "Argument '{0}' must be suit tile if argument '{1}' is {2}.",
-                                nameof(TopTile), nameof(tileSetKind), tileSetKind));
+                                nameof(topTileArrayIndex), nameof(tileSetKind), tileSetKind));
                     }
                     break;
                 case TileSet.Kinds.ConcealedKong:
@@ -259,7 +259,7 @@ namespace HandCheckToolWPF.Model
                         // TODO: 枚数上限チェック
 
                         TileSet ts = new TileSet();
-                        Tile[] t = new Tile[] { TopTile, TopTile, TopTile, TopTile };
+                        Tile[] t = new Tile[] { this.TileArray[topTileArrayIndex], this.TileArray[topTileArrayIndex], this.TileArray[topTileArrayIndex], this.TileArray[topTileArrayIndex] };
                         ts.Kind = tileSetKind;
                         ts.Tiles = t;
                         isSucceeded = true;

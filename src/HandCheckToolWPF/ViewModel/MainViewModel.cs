@@ -376,7 +376,7 @@ namespace HandCheckToolWPF.ViewModel
                             break;
                         case TileSelectionMode.MeldedTileSet:
                             {
-                                var ret = this.mainModel.AddMeldedTileSet(this.TileArray[index], this.meldedTileSelectionMode);
+                                var ret = this.mainModel.AddMeldedTileSet(index, this.meldedTileSelectionMode);
                                 if (ret.Item1)
                                 {
                                     this.MeldedTileSetArray = ret.Item2;
