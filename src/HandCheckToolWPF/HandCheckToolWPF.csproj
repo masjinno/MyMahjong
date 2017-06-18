@@ -117,7 +117,7 @@
     <Resource Include="Resource\Image\Tile\tile_02_3m.png" />
     <Resource Include="Resource\Image\Tile\tile_03_4m.png" />
     <Resource Include="Resource\Image\Tile\tile_04_5m.png" />
-    <Resource Include="Resource\Image\Tile\tile_04_5m_r.png" />
+    <Resource Include="Resource\Image\Tile\tile_04_5m_red.png" />
     <Resource Include="Resource\Image\Tile\tile_05_6m.png" />
     <Resource Include="Resource\Image\Tile\tile_06_7m.png" />
     <Resource Include="Resource\Image\Tile\tile_07_8m.png" />
@@ -127,7 +127,7 @@
     <Resource Include="Resource\Image\Tile\tile_11_3p.png" />
     <Resource Include="Resource\Image\Tile\tile_12_4p.png" />
     <Resource Include="Resource\Image\Tile\tile_13_5p.png" />
-    <Resource Include="Resource\Image\Tile\tile_13_5p_r.png" />
+    <Resource Include="Resource\Image\Tile\tile_13_5p_red.png" />
     <Resource Include="Resource\Image\Tile\tile_14_6p.png" />
     <Resource Include="Resource\Image\Tile\tile_15_7p.png" />
     <Resource Include="Resource\Image\Tile\tile_16_8p.png" />
@@ -137,7 +137,7 @@
     <Resource Include="Resource\Image\Tile\tile_20_3s.png" />
     <Resource Include="Resource\Image\Tile\tile_21_4s.png" />
     <Resource Include="Resource\Image\Tile\tile_22_5s.png" />
-    <Resource Include="Resource\Image\Tile\tile_22_5s_r.png" />
+    <Resource Include="Resource\Image\Tile\tile_22_5s_red.png" />
     <Resource Include="Resource\Image\Tile\tile_23_6s.png" />
     <Resource Include="Resource\Image\Tile\tile_24_7s.png" />
     <Resource Include="Resource\Image\Tile\tile_25_8s.png" />
