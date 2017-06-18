@@ -220,7 +220,12 @@ namespace HandCheckToolWPF.Model
         {
             if (topTileArrayIndex < 0 || this.TileArray.Count() <= topTileArrayIndex )
             {
-                throw new ArgumentOutOfRangeException(nameof(topTileArrayIndex), string.Format("Argument '{0}' is null.", nameof(topTileArrayIndex)));
+                throw new ArgumentOutOfRangeException(nameof(topTileArrayIndex), string.Format("Argument '{0}' is out of range.", nameof(topTileArrayIndex)));
+            }
+
+            if (this.concealedTileNum + 3 >= this.concealedTileNumMax || this.MeldedTileSetArray.Count() >= 4)
+            {
+                return new Tuple<bool, TileSet[]>(false, this.MeldedTileSetArray);
             }
 
             bool isSucceeded = false;
@@ -243,6 +248,10 @@ namespace HandCheckToolWPF.Model
                     {
                         // TODO: 枚数上限チェック
 
+                        TileSet ts = new TileSet();
+                        Tile[] t = this.GetChowTiles(topTileArrayIndex);
+                        ts.Kind = tileSetKind;
+                        ts.Tiles = t;
                         isSucceeded = true;
                     }
                     else
@@ -276,7 +285,56 @@ namespace HandCheckToolWPF.Model
                             TileSet.Kinds.MeldedKongFromDiscard, TileSet.Kinds.MeldedKongFromHand));
             }
 
+            if (isSucceeded)
+            {
+                this.concealedTileNumMax -= 3;
+            }
+
             return new Tuple<bool, TileSet[]>(isSucceeded, this.MeldedTileSetArray);
+        }
+
+        /// <summary>
+        /// チーの面子を取得する。
+        /// 条件は以下の通り。
+        /// ・this.TileArray[<paramref name="index"/>].Numberが1～6であれば、その牌から始まる3つの牌を返す
+        ///   ただし、2～3番目の牌は赤牌を含まない
+        /// ・this.TileArray[<paramref name="index"/>].Numberが7～9であれば、7～9の3つの牌を返す
+        /// </summary>
+        /// <param name="index">選択されたTileArray配列のインデックス</param>
+        /// <returns><paramref name="index"/>に対応するチーの3牌</returns>
+        private Tile[] GetChowTiles(int index)
+        {
+            Tile[] tiles;
+
+            if (this.TileArray[index].Number <= 7)
+            {
+                tiles = new Tile[3];
+                tiles[0] = this.TileArray[index];
+
+                int skip = 0;
+                for (int i = 1; i < 3; i++)
+                {
+                    if (this.TileArray[index + i + skip].IsRed)
+                    {
+                        skip++;
+                    }
+                    tiles[i] = this.TileArray[index + i + skip];
+                }
+            }
+            else if (this.TileArray[index].Number == 8)
+            {
+                tiles = new Tile[] { this.TileArray[index - 1], this.TileArray[index], this.TileArray[index + 1] };
+            }
+            else if (this.TileArray[index].Number == 9)
+            {
+                tiles = new Tile[] { this.TileArray[index - 2], this.TileArray[index - 1], this.TileArray[index] };
+            }
+            else
+            {
+                throw new Exception("実装ミス");
+            }
+
+            return tiles;
         }
 
         /// <summary>
