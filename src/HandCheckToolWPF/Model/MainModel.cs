@@ -64,6 +64,7 @@ namespace HandCheckToolWPF.Model
             public Tile.Kinds kinds;
             public bool isRed;
             public string frontImagePath;
+            public string rightFrontImagePath;
         }
         /// <summary>
         /// TileArrayメンバの初期化
@@ -72,43 +73,45 @@ namespace HandCheckToolWPF.Model
         {
             Dictionary<int, TileDatas> TileArrayKindsDictionary = new Dictionary<int, TileDatas>()
             {
-                { 0, new TileDatas{kinds = Tile.Kinds.Character1 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_00_1m.png"     } },
-                { 1, new TileDatas{kinds = Tile.Kinds.Character2 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_01_2m.png"     } },
-                { 2, new TileDatas{kinds = Tile.Kinds.Character3 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_02_3m.png"     } },
-                { 3, new TileDatas{kinds = Tile.Kinds.Character4 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_03_4m.png"     } },
-                { 4, new TileDatas{kinds = Tile.Kinds.Character5 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_04_5m.png"     } },
-                { 5, new TileDatas{kinds = Tile.Kinds.Character5 , isRed = true , frontImagePath = @"..\..\Resource\Image\Tile\tile_04_5m_red.png" } },
-                { 6, new TileDatas{kinds = Tile.Kinds.Character6 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_05_6m.png"     } },
-                { 7, new TileDatas{kinds = Tile.Kinds.Character7 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_06_7m.png"     } },
-                { 8, new TileDatas{kinds = Tile.Kinds.Character8 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_07_8m.png"     } },
-                { 9, new TileDatas{kinds = Tile.Kinds.Character9 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_08_9m.png"     } },
-                {10, new TileDatas{kinds = Tile.Kinds.Circle1    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_09_1p.png"     } },
-                {11, new TileDatas{kinds = Tile.Kinds.Circle2    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_10_2p.png"     } },
-                {12, new TileDatas{kinds = Tile.Kinds.Circle3    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_11_3p.png"     } },
-                {13, new TileDatas{kinds = Tile.Kinds.Circle4    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_12_4p.png"     } },
-                {14, new TileDatas{kinds = Tile.Kinds.Circle5    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_13_5p.png"     } },
-                {15, new TileDatas{kinds = Tile.Kinds.Circle5    , isRed = true , frontImagePath = @"..\..\Resource\Image\Tile\tile_13_5p_red.png" } },
-                {16, new TileDatas{kinds = Tile.Kinds.Circle6    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_14_6p.png"     } },
-                {17, new TileDatas{kinds = Tile.Kinds.Circle7    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_15_7p.png"     } },
-                {18, new TileDatas{kinds = Tile.Kinds.Circle8    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_16_8p.png"     } },
-                {19, new TileDatas{kinds = Tile.Kinds.Circle9    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_17_9p.png"     } },
-                {20, new TileDatas{kinds = Tile.Kinds.Bamboo1    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_18_1s.png"     } },
-                {21, new TileDatas{kinds = Tile.Kinds.Bamboo2    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_19_2s.png"     } },
-                {22, new TileDatas{kinds = Tile.Kinds.Bamboo3    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_20_3s.png"     } },
-                {23, new TileDatas{kinds = Tile.Kinds.Bamboo4    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_21_4s.png"     } },
-                {24, new TileDatas{kinds = Tile.Kinds.Bamboo5    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_22_5s.png"     } },
-                {25, new TileDatas{kinds = Tile.Kinds.Bamboo5    , isRed = true , frontImagePath = @"..\..\Resource\Image\Tile\tile_22_5s_red.png" } },
-                {27, new TileDatas{kinds = Tile.Kinds.Bamboo7    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_24_7s.png"     } },
-                {28, new TileDatas{kinds = Tile.Kinds.Bamboo8    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_25_8s.png"     } },
-                {29, new TileDatas{kinds = Tile.Kinds.Bamboo9    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_26_9s.png"     } },
-                {30, new TileDatas{kinds = Tile.Kinds.East       , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_27_e.png"      } },
-                {31, new TileDatas{kinds = Tile.Kinds.South      , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_28_s.png"      } },
-                {32, new TileDatas{kinds = Tile.Kinds.West       , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_29_w.png"      } },
-                {33, new TileDatas{kinds = Tile.Kinds.North      , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_30_n.png"      } },
-                {34, new TileDatas{kinds = Tile.Kinds.WhiteDragon, isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_31_wd.png"     } },
-                {35, new TileDatas{kinds = Tile.Kinds.GreenDragon, isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_32_gd.png"     } },
-                {36, new TileDatas{kinds = Tile.Kinds.RedDragon  , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_33_rd.png"     } }
+                { 0, new TileDatas{kinds = Tile.Kinds.Character1 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_00_1m.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_00_1m_right.png"     } },
+                { 1, new TileDatas{kinds = Tile.Kinds.Character2 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_01_2m.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_01_2m_right.png"     } },
+                { 2, new TileDatas{kinds = Tile.Kinds.Character3 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_02_3m.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_02_3m_right.png"     } },
+                { 3, new TileDatas{kinds = Tile.Kinds.Character4 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_03_4m.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_03_4m_right.png"     } },
+                { 4, new TileDatas{kinds = Tile.Kinds.Character5 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_04_5m.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_04_5m_right.png"     } },
+                { 5, new TileDatas{kinds = Tile.Kinds.Character5 , isRed = true , frontImagePath = @"..\..\Resource\Image\Tile\tile_04_5m_red.png", rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_04_5m_red.png" } },
+                { 6, new TileDatas{kinds = Tile.Kinds.Character6 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_05_6m.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_05_6m_right.png"     } },
+                { 7, new TileDatas{kinds = Tile.Kinds.Character7 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_06_7m.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_06_7m_right.png"     } },
+                { 8, new TileDatas{kinds = Tile.Kinds.Character8 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_07_8m.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_07_8m_right.png"     } },
+                { 9, new TileDatas{kinds = Tile.Kinds.Character9 , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_08_9m.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_08_9m_right.png"     } },
+                {10, new TileDatas{kinds = Tile.Kinds.Circle1    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_09_1p.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_09_1p_right.png"     } },
+                {11, new TileDatas{kinds = Tile.Kinds.Circle2    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_10_2p.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_10_2p_right.png"     } },
+                {12, new TileDatas{kinds = Tile.Kinds.Circle3    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_11_3p.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_11_3p_right.png"     } },
+                {13, new TileDatas{kinds = Tile.Kinds.Circle4    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_12_4p.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_12_4p_right.png"     } },
+                {14, new TileDatas{kinds = Tile.Kinds.Circle5    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_13_5p.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_13_5p_right.png"     } },
+                {15, new TileDatas{kinds = Tile.Kinds.Circle5    , isRed = true , frontImagePath = @"..\..\Resource\Image\Tile\tile_13_5p_red.png", rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_13_5p_red_right.png" } },
+                {16, new TileDatas{kinds = Tile.Kinds.Circle6    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_14_6p.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_14_6p_right.png"     } },
+                {17, new TileDatas{kinds = Tile.Kinds.Circle7    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_15_7p.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_15_7p_right.png"     } },
+                {18, new TileDatas{kinds = Tile.Kinds.Circle8    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_16_8p.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_16_8p_right.png"     } },
+                {19, new TileDatas{kinds = Tile.Kinds.Circle9    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_17_9p.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_17_9p_right.png"     } },
+                {20, new TileDatas{kinds = Tile.Kinds.Bamboo1    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_18_1s.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_18_1s_right.png"     } },
+                {21, new TileDatas{kinds = Tile.Kinds.Bamboo2    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_19_2s.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_19_2s_right.png"     } },
+                {22, new TileDatas{kinds = Tile.Kinds.Bamboo3    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_20_3s.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_20_3s_right.png"     } },
+                {23, new TileDatas{kinds = Tile.Kinds.Bamboo4    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_21_4s.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_21_4s_right.png"     } },
+                {24, new TileDatas{kinds = Tile.Kinds.Bamboo5    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_22_5s.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_22_5s_right.png"     } },
+                {25, new TileDatas{kinds = Tile.Kinds.Bamboo5    , isRed = true , frontImagePath = @"..\..\Resource\Image\Tile\tile_22_5s_red.png", rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_22_5s_red_right.png" } },
+                {27, new TileDatas{kinds = Tile.Kinds.Bamboo7    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_24_7s.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_24_7s_right.png"     } },
+                {28, new TileDatas{kinds = Tile.Kinds.Bamboo8    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_25_8s.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_25_8s_right.png"     } },
+                {29, new TileDatas{kinds = Tile.Kinds.Bamboo9    , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_26_9s.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_26_9s_right.png"     } },
+                {30, new TileDatas{kinds = Tile.Kinds.East       , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_27_e.png"     , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_27_e_right.png"      } },
+                {31, new TileDatas{kinds = Tile.Kinds.South      , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_28_s.png"     , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_28_s_right.png"      } },
+                {32, new TileDatas{kinds = Tile.Kinds.West       , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_29_w.png"     , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_29_w_right.png"      } },
+                {33, new TileDatas{kinds = Tile.Kinds.North      , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_30_n.png"     , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_30_n_right.png"      } },
+                {34, new TileDatas{kinds = Tile.Kinds.WhiteDragon, isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_31_wd.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_31_wd_right.png"     } },
+                {35, new TileDatas{kinds = Tile.Kinds.GreenDragon, isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_32_gd.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_32_gd_right.png"     } },
+                {36, new TileDatas{kinds = Tile.Kinds.RedDragon  , isRed = false, frontImagePath = @"..\..\Resource\Image\Tile\tile_33_rd.png"    , rightFrontImagePath = @"..\..\Resource\Image\Tile\tile_33_rd_right.png"     } }
             };
+            string backImagePath = @"..\..\Resource\Image\Tile\tile_any_back.png";
+            string rightBackImagePath = @"..\..\Resource\Image\Tile\tile_any_back_right.png";
 
             /// 選択牌一覧
             for (int i = 0; i < this.TileArray.Count(); i++)
@@ -116,6 +119,9 @@ namespace HandCheckToolWPF.Model
                 this.TileArray[i] = new Tile();
                 this.TileArray[i].Kind = TileArrayKindsDictionary[i].kinds;
                 this.TileArray[i].FrontImage = this.GetImageSource(TileArrayKindsDictionary[i].frontImagePath);
+                this.TileArray[i].RightFrontImage = this.GetImageSource(TileArrayKindsDictionary[i].rightFrontImagePath);
+                this.TileArray[i].BackImage = this.GetImageSource(backImagePath);
+                this.TileArray[i].RightBackImage = this.GetImageSource(rightBackImagePath);
             }
             this.concealedTileNumMax = 13;
             this.concealedTileNum = 0;

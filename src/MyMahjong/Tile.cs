@@ -132,15 +132,17 @@ namespace MyMahjong
         /// </summary>
         public int Dora { get; set; }
 
-        /// <summary>
-        /// 表面の画像
-        /// </summary>
+        /// <summary>表面の画像</summary>
         public System.Windows.Media.ImageSource FrontImage { get; set; }
 
-        /// <summary>
-        /// 裏面の画像
-        /// </summary>
+        /// <summary>右から真っ直ぐ見える表面の画像</summary>
+        public System.Windows.Media.ImageSource RightFrontImage { get; set; }
+        
+        /// <summary>裏面の画像</summary>
         public System.Windows.Media.ImageSource BackImage { get; set; }
+
+        /// <summary>右から真っ直ぐ見える裏面の画像</summary>
+        public System.Windows.Media.ImageSource RightBackImage { get; set; }
 
         #endregion
 
